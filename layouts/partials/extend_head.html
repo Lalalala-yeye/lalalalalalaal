@@ -17,7 +17,7 @@ html[data-theme="light"] {
 html[data-theme="light"],
 html[data-theme="light"] body {
   background-color: #f5ecd8;                 /* 米黄色底色 */
-  background-image: url("/img/");
+  background-image: url('{{ "img/" | absURL }}');
   background-size: cover;                    /* 单张大图，填满视口 */
   background-repeat: no-repeat;              /* 不平铺，避免拼接缝 */
   background-attachment: fixed;              /* 固定在视口上，滚动时始终是一整张 */
@@ -52,7 +52,7 @@ html[data-theme="dark"] {
 html[data-theme="dark"],
 html[data-theme="dark"] body {
   background-color: rgb(45, 37, 23);         /* 深色底色 */
-  background-image: url("/img/paper-texture.png");
+  background-image: url('{{ "img/paper-texture.png" | absURL }}');
   background-size: cover;                    /* 单张大图 */
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -80,7 +80,11 @@ html[data-theme="dark"] .main {
   border-radius: var(--radius) !important;
   box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06) !important;
 }
-
+/* 浅色模式归档页：去掉主内容区背景，露出纸纹 */
+html[data-theme="light"] .main:has(.archive-year) {
+  background: transparent !important;
+  box-shadow: none !important;
+}
 /* 卡片与归档：框内留足左边距，内容不贴左边框 */
 .main .post-entry {
   padding: 28px 36px 28px 44px !important;
