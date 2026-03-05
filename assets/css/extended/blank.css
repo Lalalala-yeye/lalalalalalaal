@@ -1,0 +1,92 @@
+/* 缩小首页自我介绍和个人卡片之间的间距 */
+
+/* 自我介绍块（homeInfo）底部间距调小 */
+.first-entry.home-info {
+  margin-bottom: 0; /* 原来可能更大，可以再调成 1rem / 0.5rem 看效果 */
+}
+
+/* 紧跟在自我介绍后面的 profile 卡片，去掉多余的上边距 */
+.first-entry.home-info + .profile {
+  margin-top: 0; /* 如果还想更紧，可以改成负数，比如 -0.5rem，但一般 0 就够了 */
+}
+/* 1. 缩小 homeInfo 本身的高度和底部间距 */
+.first-entry.home-info {
+  min-height: auto;                /* 不要强制 320px 高度 */
+  margin: var(--gap) 0 var(--gap) 0;  /* 上下各一个 gap，你也可以再减小 */
+}
+
+/* 2. 覆盖 profile 的“整屏高度”设置，让它变成普通块级元素 */
+.main .profile {
+  min-height: auto;  /* 关键：去掉 100vh 那个高度 */
+  margin-top: 0;     /* 如果还觉得远，可以再改成 -0.5rem 试试 */
+  padding-top: 0;
+}
+/* 头像常规大小（与 profileMode 里的 imageWidth/Height 对应） */
+.profile img {
+  width: 160px;
+  height: 160px;
+  transition: width 0.2s ease-out, height 0.2s ease-out;
+  cursor: pointer;
+}
+
+/* 悬停时真正变大，下面内容会被顶下去 */
+.profile img:hover {
+  width: 190px;   /* 自己调：比如 180 / 190 / 200 */
+  height: 190px;
+}
+/* 仅浅色主题下修改按钮颜色，深色主题不变 */
+[data-theme="light"] .profile .button {
+  background: #f4c361;   /* 例如 #e3f2fd、#bbdefb、#c8e6c9 等 */
+  color: #333;                /* 按钮文字颜色，按需改 */
+}
+
+/* 可选：悬停时稍微变深一点 */
+[data-theme="light"] .profile .button:hover {
+  background: #e7b549;
+}
+/* 标签列表页上的标签 */
+[data-theme="light"] .terms-tags a {
+  background: #f2d493;   /* 如 #e3f2fd */
+  color: #000000;       /* 如 #1565c0 */
+}
+
+[data-theme="light"] .terms-tags a:hover {
+  background: #dfc793;
+  color: #000000;
+}
+/* 文章卡片：加大框内左右内边距，内容不贴左边框 */
+.post-entry {
+  padding: var(--gap) calc(var(--gap) * 1.5);
+  padding-left: calc(var(--gap) * 1.75);   /* 左边更宽一点，约 42px */
+}
+
+/* 归档页：每条归档条目和标题都留出左边距 */
+.archive-year {
+  padding-left: calc(var(--gap) * 0.5);
+}
+
+.archive-month {
+  padding-left: calc(var(--gap) * 0.5);
+}
+
+.archive-entry {
+  padding: 14px calc(var(--gap) * 1) 14px calc(var(--gap) * 1.5);   /* 上 右 下 左，左边约 36px */
+}
+
+html[data-theme="dark"] .profile .button { background: #333333; color: #da9c50; }
+html[data-theme="dark"] .profile .button:hover { background: #444; color: #da9c50; }
+html[data-theme="dark"] .terms-tags a { background: #333; color: #da9c50; }
+html[data-theme="dark"] .terms-tags a:hover { background: #444; color: #da9c50; }
+html[data-theme="dark"] .post-entry { background: #333; color: #da9c50; }
+html[data-theme="dark"] .archive-entry { background: #333; color: #da9c50; }
+/* 标题颜色 */
+html[data-theme="dark"] .archive-entry .archive-entry-title {
+  color: #da9c50;   /* 或你要的标题色 */
+}
+
+/* 日期/元信息颜色（通常浅一点） */
+html[data-theme="dark"] .archive-entry .archive-meta {
+  color: #aaa;      /* 或你要的次要文字色 */
+}
+
+
