@@ -91,9 +91,11 @@ params:
       # limit: 10 # refer: https://www.fusejs.io/api/methods.html#search
       keys: ["title", "permalink", "summary", "content","author"]
       includeMatches: true
-  # 评论的设置
+  # 文章末尾评论区（设为 true 才会显示）
+  comments: true
+  # Giscus 评论（需在 https://giscus.app 用 GitHub 仓库生成 repoId、categoryId 填到下面）
   giscus:
-    repo: "sonnycalcr/sonnycalcr.github.io"
+    repo: "Lalalala-yeye/lalalalalalaal"
     repoId: "xxxxxx"
     category: "Announcements"
     categoryId: "xxxxx"
