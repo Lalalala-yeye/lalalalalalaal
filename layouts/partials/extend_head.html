@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
 <style>
-/* ========== 代码块：统一用 JetBrains Mono + 保留语法高亮 ========== */
+/* ========== 代码块：JetBrains Mono + 语法高亮生效 ========== */
 .post-content pre,
 .post-content code,
 .post-content .highlight pre,
@@ -15,6 +15,11 @@
 .post-content .highlight pre code,
 .highlight pre.chroma code {
   font-family: "JetBrains Mono", "Fira Code", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace !important;
+}
+/* 取消主题对 pre code 的单一灰色，让 syntax-light / syntax-dark 里各 token 的颜色生效 */
+.post-content .highlight pre code,
+.post-content .highlight pre.chroma code {
+  color: inherit !important;
 }
 
 /* ========== 浅色模式：米黄 + 褶皱纸纹理 ========== */
