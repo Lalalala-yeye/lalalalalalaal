@@ -7,6 +7,16 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
 <style>
+/* ========== 代码块：统一用 JetBrains Mono + 保留语法高亮 ========== */
+.post-content pre,
+.post-content code,
+.post-content .highlight pre,
+.post-content .highlight code,
+.post-content .highlight pre code,
+.highlight pre.chroma code {
+  font-family: "JetBrains Mono", "Fira Code", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace !important;
+}
+
 /* ========== 浅色模式：米黄 + 褶皱纸纹理 ========== */
 html[data-theme="light"] {
   --theme: #f5ecd8;
@@ -238,5 +248,52 @@ html[data-theme="dark"] {
 /* 单篇 post 阅读区：标题、正文、标签等整体离左边框 */
 .post-single {
   padding: 28px 40px 36px 48px !important;
+}
+
+/* ========== 折叠块 details/summary：收起时更明显 ========== */
+.post-single details {
+  margin: 1em 0 !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+}
+.post-single details:not([open]) {
+  border: 1px solid var(--border) !important;
+  background: var(--entry) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+}
+.post-single details[open] {
+  border: 1px solid var(--border) !important;
+  background: var(--entry) !important;
+}
+.post-single details summary {
+  padding: 0.6em 1em !important;
+  cursor: pointer !important;
+  font-weight: 600 !important;
+  list-style: none !important;
+  user-select: none !important;
+}
+.post-single details summary::-webkit-details-marker { display: none !important; }
+.post-single details summary::marker { content: none !important; }
+/* 浅色：折叠时标题行用稍深一点的底色，更醒目 */
+html[data-theme="light"] .post-single details:not([open]) summary {
+  background: rgba(232, 220, 200, 0.9) !important;
+  color: #5c4a2a !important;
+  border-bottom: 1px solid #e2d3b4 !important;
+}
+html[data-theme="light"] .post-single details[open] summary {
+  background: rgba(232, 220, 200, 0.6) !important;
+  color: #5c4a2a !important;
+  border-bottom: 1px solid #e2d3b4 !important;
+}
+/* 深色：折叠时标题行用略亮一点的背景 */
+html[data-theme="dark"] .post-single details:not([open]) summary {
+  background: rgba(55, 56, 60, 0.95) !important;
+  color: #da9c50 !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+html[data-theme="dark"] .post-single details[open] summary {
+  background: rgba(45, 46, 50, 0.8) !important;
+  color: #da9c50 !important;
+  border-bottom: 1px solid var(--border) !important;
 }
 </style>

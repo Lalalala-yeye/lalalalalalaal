@@ -107,8 +107,8 @@ params:
     lang: "zh-CN"
     crossorigin: "anonymous"
   assets:
-    disableHLJS: true
-      # 设置网站的标签页的图标，即 favicon
+    disableHLJS: false   # 改为 false 才会输出语法高亮的 class，代码块才有颜色
+    # 设置网站的标签页的图标，即 favicon
     favicon: "favicon.png"
     favicon16x16: "favicon.png"
     favicon32x32: "favicon.png"

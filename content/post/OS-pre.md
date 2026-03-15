@@ -8,14 +8,21 @@ draft = false
 +++
 
 在这里开始写正文，支持 **Markdown**。
-OS pre知识点和解题过程分享
+OS pre 知识点和解题过程分享
 <!--more-->
-#OS-pre
-##实验经验
-建议用vim，vim有很多其他的功能可以用文件加入啊，nano虽然感觉没vim好用，但是软件工程基础还是要求使用nano的，用了vim命令显示未知指令，不过软工是GUI，实在不熟练也可以直接改文件，但是会卡。lab0一定要熟练grep和shell和Makefile文件的创建，真的要熟练才能及时写好，不然实验很麻烦，Git因为有软工第一次实验，所以其实还好。
-##C-exercise
-认真阅读假期预习和guide book，按照给的操作进入git仓库根目录也就是/24373433，再vim blib.c进入编辑就行，i进入插入模式。esc键退出，函数很简单，补充完整就好，然后make编译，再make run运行，出现pass就说明测试点过了，没过用make dbg调试一下就好了。
-##make-exercise
+
+# OS-pre
+
+## 实验经验
+
+建议用 vim，vim 有很多其他的功能可以用文件加入啊，nano虽然感觉没vim好用，但是软件工程基础还是要求使用nano的，用了vim命令显示未知指令，不过软工是GUI，实在不熟练也可以直接改文件，但是会卡。lab0 一定要熟练 grep、shell 和 Makefile 文件的创建，真的要熟练才能及时写好，不然实验很麻烦。Git 因为有软工第一次实验，所以其实还好。
+
+## C-exercise
+
+认真阅读假期预习和 guide book，按照给的操作进入git仓库根目录也就是/24373433，再vim blib.c进入编辑就行，i进入插入模式。esc键退出，函数很简单，补充完整就好，然后make编译，再make run运行，出现 pass 就说明测试点过了，没过用 `make dbg` 调试一下就好了。
+
+## make-exercise
+
 <details>
 <summary>📎 Makefile示例</summary>
 
@@ -133,8 +140,9 @@ const char *ops[] = {"add", "sub", "mul", "div"};
 
 </details>
 
-##mips-exercise
-没有很多要说的，中文翻译过来一般都可以
+## mips-exercise
+
+没有很多要说的，中文翻译过来一般都可以。
 <details>
 <summary>📎 casegen.c</summary>
 ```
