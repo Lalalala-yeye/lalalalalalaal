@@ -7,7 +7,7 @@ tags = ["Linux","Shell","Makefile","grep","awk","sed"]
 draft = false
 +++
 
-Linux 常用基础指令 + `grep/awk/sed` + Shell 脚本 + Makefile 知识点汇总，适合 **OS Lab0 / 预习 / 复习** 直接食用。
+Linux 常用基础指令 + `grep/awk/sed` + Shell 脚本 + Makefile 知识点汇总。
 
 <!--more-->
 
@@ -449,4 +449,3 @@ grep -r "TODO" --include="*.c" . \
 | awk -F: '{ file=$1; count[file]++ } END { for (f in count) print f, count[f] }'
 ```
 
-这篇基本可以当作 **OS Lab0 工具部分 + Linux 基础指令** 的小抄，如果你想我再帮你和 `OS lab0` 那篇文章之间互相加一点链接/跳转，也可以继续说。
