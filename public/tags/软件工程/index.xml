@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>软件工程 on Lalalala-yeye&#39;s Blog</title>
+    <link>https://Lalalala-yeye.github.io/lalalalalalaal/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/</link>
+    <description>Recent content in 软件工程 on Lalalala-yeye&#39;s Blog</description>
+    <generator>Hugo -- 0.157.0</generator>
+    <language>zh-cn</language>
+    <copyright>©1999 Lalalala-yeye&amp;rsquo;s Blog</copyright>
+    <lastBuildDate>Sun, 08 Mar 2026 00:00:00 +0800</lastBuildDate>
+    <atom:link href="https://Lalalala-yeye.github.io/lalalalalalaal/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SE Lab1</title>
+      <link>https://Lalalala-yeye.github.io/lalalalalalaal/post/se-lab1/</link>
+      <pubDate>Sun, 08 Mar 2026 00:00:00 +0800</pubDate>
+      <guid>https://Lalalala-yeye.github.io/lalalalalalaal/post/se-lab1/</guid>
+      <description>&lt;p&gt;软件工程 Lab1 知识点和解题过程分享。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

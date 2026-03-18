@@ -2,18 +2,53 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Posts on Lalalala-yeye&#39;s Blog</title>
-    <link>http://localhost:1313/post/</link>
+    <link>https://Lalalala-yeye.github.io/lalalalalalaal/post/</link>
     <description>Recent content in Posts on Lalalala-yeye&#39;s Blog</description>
     <generator>Hugo -- 0.157.0</generator>
     <language>zh-cn</language>
     <copyright>©1999 Lalalala-yeye&amp;rsquo;s Blog</copyright>
-    <lastBuildDate>Tue, 03 Mar 2026 11:13:42 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 18 Mar 2026 00:00:00 +0800</lastBuildDate>
+    <atom:link href="https://Lalalala-yeye.github.io/lalalalalalaal/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux 基础指令与 grep/awk/sed &amp; Shell/Makefile 总结</title>
+      <link>https://Lalalala-yeye.github.io/lalalalalalaal/post/linux-tools-note/</link>
+      <pubDate>Wed, 18 Mar 2026 00:00:00 +0800</pubDate>
+      <guid>https://Lalalala-yeye.github.io/lalalalalalaal/post/linux-tools-note/</guid>
+      <description>&lt;p&gt;Linux 常用基础指令 + &lt;code&gt;grep/awk/sed&lt;/code&gt; + Shell 脚本 + Makefile 知识点汇总，适合 &lt;strong&gt;OS Lab0 / 预习 / 复习&lt;/strong&gt; 直接食用。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OS pre</title>
+      <link>https://Lalalala-yeye.github.io/lalalalalalaal/post/os-pre/</link>
+      <pubDate>Sun, 08 Mar 2026 00:00:00 +0800</pubDate>
+      <guid>https://Lalalala-yeye.github.io/lalalalalalaal/post/os-pre/</guid>
+      <description>&lt;p&gt;OS pre 知识点和解题过程分享&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OS 课下实验Lab0</title>
+      <link>https://Lalalala-yeye.github.io/lalalalalalaal/post/os-lab0/</link>
+      <pubDate>Sun, 08 Mar 2026 00:00:00 +0800</pubDate>
+      <guid>https://Lalalala-yeye.github.io/lalalalalalaal/post/os-lab0/</guid>
+      <description>&lt;p&gt;OS lab0知识点和解题过程分享&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>SE Lab1</title>
+      <link>https://Lalalala-yeye.github.io/lalalalalalaal/post/se-lab1/</link>
+      <pubDate>Sun, 08 Mar 2026 00:00:00 +0800</pubDate>
+      <guid>https://Lalalala-yeye.github.io/lalalalalalaal/post/se-lab1/</guid>
+      <description>&lt;p&gt;软件工程 Lab1 知识点和解题过程分享。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>学校概念模型 E-R 图</title>
+      <link>https://Lalalala-yeye.github.io/lalalalalalaal/post/school-er-diagram/</link>
+      <pubDate>Sun, 08 Mar 2026 00:00:00 +0800</pubDate>
+      <guid>https://Lalalala-yeye.github.io/lalalalalalaal/post/school-er-diagram/</guid>
+      <description>&lt;p&gt;根据题意：学校有若干系，每系有若干班级和教研室，每教研室有若干教员，教授/副教授各带若干研究生，每班有若干学生，学生与课程为多对多选修关系。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>YEYEYEYEYEYEYEYEYYEEY</title>
-      <link>http://localhost:1313/post/lalalalalalala/</link>
+      <link>https://Lalalala-yeye.github.io/lalalalalalaal/post/lalalalalalala/</link>
       <pubDate>Tue, 03 Mar 2026 11:13:42 +0800</pubDate>
-      <guid>http://localhost:1313/post/lalalalalalala/</guid>
+      <guid>https://Lalalala-yeye.github.io/lalalalalalaal/post/lalalalalalala/</guid>
       <description></description>
     </item>
   </channel>

@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="zh" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>OS 课下实验Lab0 | Lalalala-yeye&#39;s Blog</title>
+<meta name="keywords" content="OS, Soft Where, 学习分享">
+<meta name="description" content="OS lab0知识点和解题过程分享">
+<meta name="author" content="Lalalala-yeye">
+<link rel="canonical" href="https://Lalalala-yeye.github.io/lalalalalalaal/post/os-lab0/">
+<link crossorigin="anonymous" href="/lalalalalalaal/assets/css/stylesheet.ea067b369d1f59469118831dbdecabb987d11b19478cc60348c49cbcfa141b70.css" integrity="sha256-6gZ7Np0fWUaRGIMdveyruYfRGxlHjMYDSMScvPoUG3A=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://Lalalala-yeye.github.io/lalalalalalaal/favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://Lalalala-yeye.github.io/lalalalalalaal/favicon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://Lalalala-yeye.github.io/lalalalalalaal/favicon.png">
+<link rel="apple-touch-icon" href="https://Lalalala-yeye.github.io/lalalalalalaal/favicon.png">
+<link rel="mask-icon" href="https://Lalalala-yeye.github.io/lalalalalalaal/favicon.png">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="zh" href="https://Lalalala-yeye.github.io/lalalalalalaal/post/os-lab0/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+<style>
+ 
+.post-content pre,
+.post-content code,
+.post-content .highlight pre,
+.post-content .highlight code,
+.post-content .highlight pre code,
+.highlight pre.chroma code {
+  font-family: "JetBrains Mono", "Fira Code", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace !important;
+}
+ 
+.post-content .highlight pre code,
+.post-content .highlight pre.chroma code {
+  color: inherit !important;
+}
+
+ 
+html[data-theme="light"] {
+  --theme: #f5ecd8;
+  --entry: rgba(251, 245, 227, 0.85);
+  --border: #e2d3b4;
+}
+
+html[data-theme="light"],
+html[data-theme="light"] body {
+  background-color: #f5ecd8;                  
+  background-image: url('https://Lalalala-yeye.github.io/lalalalalalaal/img/');
+  background-size: cover;                     
+  background-repeat: no-repeat;               
+  background-attachment: fixed;               
+  background-blend-mode: multiply;            
+}
+
+ 
+html[data-theme="light"] .post-entry,
+html[data-theme="light"] .post-single {
+  background: var(--entry);
+  border: 1px solid var(--entry);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12), 0 12px 32px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+ 
+html[data-theme="light"] .post-tags a,
+html[data-theme="light"] .terms-tags a,
+html[data-theme="light"] .share-buttons,
+html[data-theme="light"] .paginav a {
+  border: 1px solid var(--code-bg);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+ 
+html[data-theme="dark"] {
+  --theme: rgb(22, 23, 26);
+  --entry: rgba(36, 37, 41, 0.9);
+  --border: rgb(45, 46, 50);
+}
+
+html[data-theme="dark"],
+html[data-theme="dark"] body {
+  background-color: rgb(45, 37, 23);          
+  background-image: url('https://Lalalala-yeye.github.io/lalalalalalaal/img/paper-texture.png');
+  background-size: cover;                     
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-blend-mode: multiply;            
+}
+
+ 
+html[data-theme="light"] .list,
+html[data-theme="dark"] .list {
+  background: transparent;
+}
+
+ 
+:root { --list-main-bg: transparent; }
+html[data-theme="light"] { --list-main-bg: rgba(254, 251, 245, 0.92); }
+html[data-theme="dark"] { --list-main-bg: rgba(11, 5, 0, 0.275); }
+ 
+.main:not(:has(.post-single)) {
+  background: var(--list-main-bg) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06) !important;
+}
+html[data-theme="dark"] .main {
+  background: var(--list-main-bg) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06) !important;
+}
+ 
+html[data-theme="light"] .main:has(.archive-year) {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+ 
+.main .post-entry {
+  padding: 28px 36px 28px 44px !important;
+}
+ 
+html[data-theme="dark"] .post-entry {
+  background: #333 !important;
+  border-color: #444 !important;
+  color: #da9c50 !important;
+}
+html[data-theme="dark"] .post-entry .entry-header h2,
+html[data-theme="dark"] .post-entry .entry-content,
+html[data-theme="dark"] .post-entry .entry-footer {
+  color: #da9c50 !important;
+}
+ 
+ 
+.list .page-header { margin-bottom: 1.5em !important; }
+.list .page-header h1 { font-size: 2.25rem !important; font-weight: 700 !important; }
+
+ 
+.archive-year {
+  margin-top: 2.5em !important;
+  padding-left: 0 !important;
+  border-bottom: none !important;
+}
+.archive-year:first-of-type { margin-top: 1.25em !important; }
+.archive-year:not(:last-of-type) { padding-bottom: 0 !important; }
+
+.archive-year-header {
+  font-size: 2.75rem !important;    
+  font-weight: 700 !important;
+  margin: 0 0 0 0 !important;    
+}
+.archive-year-header .archive-count {
+  font-weight: 400 !important;
+  color: var(--secondary) !important;
+  margin-left: 0.2em !important;
+  font-size: 0.75em !important;
+}
+
+ 
+.archive-month {
+  display: block !important;
+  padding: 0 0 0.6em 0 !important;    
+  margin-left: 3.5rem !important;
+  border: none !important;
+  border-bottom: none !important;
+}
+
+.archive-month-header {
+  margin: 0.6em 0 0.2em 0 !important;
+  width: auto !important;
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+}
+.archive-month-header .archive-count {
+  color: var(--secondary) !important;
+  margin-left: 0.2em !important;
+  font-size: 0.8em !important;
+}
+
+ 
+.archive-posts {
+  margin-left: 2.75rem !important;
+  width: auto !important;
+  position: relative !important;
+  padding-left: 1.5rem !important;
+}
+ 
+.archive-posts::before {
+  content: '' !important;
+  position: absolute !important;
+  left: 0.35rem !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  width: 2px !important;
+  background: var(--border) !important;
+  border-radius: 1px !important;
+}
+ 
+.archive-entry::before {
+  content: '' !important;
+  position: absolute !important;
+  left: -1.15rem !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 18px !important;
+  height: 18px !important;
+  border-radius: 50% !important;
+  background: transparent !important;
+  border: 2px solid var(--archive-dot-ring) !important;
+  box-sizing: border-box !important;
+  z-index: 1 !important;
+}
+.archive-entry::after {
+  content: '' !important;
+  position: absolute !important;
+  left: -1.15rem !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 7px !important;
+  height: 7px !important;
+  border-radius: 50% !important;
+  background: var(--archive-dot-inner) !important;
+  z-index: 2 !important;
+}
+
+ 
+:root {
+  --archive-card-bg: var(--entry);
+  --archive-card-border: var(--border);
+  --archive-dot-ring: var(--border);
+  --archive-dot-inner: var(--primary);
+}
+html[data-theme="light"] {
+  --archive-card-bg: rgba(254, 250, 243, 0.95);
+  --archive-card-border: #e8dcc8;
+  --archive-dot-ring: #b89255;
+  --archive-dot-inner: #784d0d;
+}
+html[data-theme="dark"] {
+  --archive-card-bg: var(--entry);
+  --archive-card-border: var(--border);
+  --archive-dot-ring: var(--border);
+  --archive-dot-inner: var(--primary);
+}
+
+.archive-entry {
+  padding: 0.75em 1em !important;
+  margin: 0 0 0.5em 0 !important;
+  background: var(--archive-card-bg) !important;
+  border: 1px solid var(--archive-card-border) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06) !important;
+  position: relative !important;
+}
+.archive-entry-title {
+  font-size: 1rem !important;
+  font-weight: 400 !important;
+  margin: 0 !important;
+  line-height: 1.4 !important;
+}
+.archive-meta {
+  font-size: 0.8125rem !important;
+  color: var(--secondary) !important;
+  margin-top: 0.2em !important;
+  margin-bottom: 0 !important;
+}
+
+ 
+.post-single {
+  padding: 28px 40px 36px 48px !important;
+}
+
+ 
+.post-single details {
+  margin: 1em 0 !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+}
+.post-single details:not([open]) {
+  border: 1px solid var(--border) !important;
+  background: var(--entry) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+}
+.post-single details[open] {
+  border: 1px solid var(--border) !important;
+  background: var(--entry) !important;
+}
+.post-single details summary {
+  padding: 0.6em 1em !important;
+  cursor: pointer !important;
+  font-weight: 600 !important;
+  list-style: none !important;
+  user-select: none !important;
+}
+.post-single details summary::-webkit-details-marker { display: none !important; }
+.post-single details summary::marker { content: none !important; }
+ 
+html[data-theme="light"] .post-single details:not([open]) summary {
+  background: rgba(232, 220, 200, 0.9) !important;
+  color: #5c4a2a !important;
+  border-bottom: 1px solid #e2d3b4 !important;
+}
+html[data-theme="light"] .post-single details[open] summary {
+  background: rgba(232, 220, 200, 0.6) !important;
+  color: #5c4a2a !important;
+  border-bottom: 1px solid #e2d3b4 !important;
+}
+ 
+html[data-theme="dark"] .post-single details:not([open]) summary {
+  background: rgba(55, 56, 60, 0.95) !important;
+  color: #da9c50 !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+html[data-theme="dark"] .post-single details[open] summary {
+  background: rgba(45, 46, 50, 0.8) !important;
+  color: #da9c50 !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+</style>
+<meta property="og:url" content="https://Lalalala-yeye.github.io/lalalalalalaal/post/os-lab0/">
+  <meta property="og:site_name" content="Lalalala-yeye&#39;s Blog">
+  <meta property="og:title" content="OS 课下实验Lab0">
+  <meta property="og:description" content="OS lab0知识点和解题过程分享">
+  <meta property="og:locale" content="zh-cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2026-03-08T00:00:00+08:00">
+    <meta property="article:modified_time" content="2026-03-08T00:00:00+08:00">
+    <meta property="article:tag" content="OS">
+    <meta property="article:tag" content="Soft Where">
+    <meta property="article:tag" content="学习分享">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OS 课下实验Lab0">
+<meta name="twitter:description" content="OS lab0知识点和解题过程分享">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://Lalalala-yeye.github.io/lalalalalalaal/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "OS 课下实验Lab0",
+      "item": "https://Lalalala-yeye.github.io/lalalalalalaal/post/os-lab0/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "OS 课下实验Lab0",
+  "name": "OS 课下实验Lab0",
+  "description": "OS lab0知识点和解题过程分享\n",
+  "keywords": [
+    "OS", "Soft Where", "学习分享"
+  ],
+  "articleBody": "OS lab0知识点和解题过程分享\nOS lab0知识点和解题过程分享 首先没有经验的话大家还是尽量读完guide book再做题(guide-book(lab0部分).pdf\r)工具部分可以等lab0做完再看，不过还是建议早点看，毕竟vim，git仓库之类的可以大幅降低CLI编程和文件处理一开始的不适感，而且很方便。在教学内容-\u003e实验教学资料里有，也可以在给的 github 仓库里看一下代码，不过代码库是实时更新的，这里就不贴了。\nlab0 作为带大家熟悉 CLI(命令行)界面的编程，主要还是考察一些指令，在课程网站给出的 lab0 串讲(2026 操作系统 Lab0 串讲.pdf\r)里也有提示，考察了C语言和gcc编译指令，sed，cp，shell，grep,基本上借助AI和看完指令都可以轻松解决，就不多说了。\n然后开始吧，做实验先去自动分支初始化，然后进入虚拟机等一样的步骤，这里不多说。\n主要过程放在labpre里(虽然写这篇的时候pre还没写(毕竟只是为了督促我自己写实验()))\n把题目贴在这里(神秘北航学生未选课录不进系统，神秘的假期预习根本看不了，要是有来预习的(真的会有吗)可以看这里)\n题目（点击展开）\rExercise 0.1 Lab0 第一道练习题包括以下四题，如果你四道题全部完成且正确，即可获得50 分。\r1、在Lab0 工作区的src 目录中，存在一个名为palindrome.c 的文件，使用刚刚学 过的工具打开palindrome.c，使用 c 语言实现判断输入整数 n(1≤n≤10000) 是否为回 文数的程序(输入输出部分已经完成)。通过stdin每次只输入一个整数n，若这个数字为 回文数则输出Y，否则输出N。[注意：正读倒读相同的整数叫回文数]\n2、在src目录下，存在一个空白的Makefile文件，借助刚刚掌握的Makefile知识， 将其补全，以实现通过make命令触发src目录下的palindrome.c文件的编译链接的功 能，生成的可执行文件命名为palindrome。\n3、在src/sh_test目录下，有一个file文件和hello_os.sh文件。hello_os.sh是 一个未完成的脚本文档，请同学们借助shell编程的知识，将其补完，以实现通过命令bash hello_os.shAAABBB，在hello_os.sh所处的目录新建一个名为BBB的文件，其内容为AAA文件的第8、32、128、512、1024行的内容提取(AAA文件行数一定超过1024行)。[注意：对于命令bashhello_os.sh AAABBB，AAA及BBB可为任何合法文件的名称，例如bashhello_os.sh filehello_os.c，若已有hello_os.c文件，则将其原有内容覆盖]\n4、补全后的palindrome.c、Makefile、hello_os.sh依次复制到路径dstpalindrome.c,dst/Makefile,dst/sh_test/hello_os.sh[注意：文件名和路径必须与题目要求相同] 要求按照要求完成后，最终提交的文件树图示如下\n1|--dst 2| |--Makefile 3| |--palindrome.c 4| `--sh_test 5| `--hello_os.sh 6`--src 7|--Makefile 8|--palindrome.c 9`--sh_test 10|--file 11`--hello_os.sh 12第一题最终提交的文件树 Exercise0.2 Lab0第二道练习题包括以下一题，如果你完成且正确，即可获得12分。\n1、在Lab0工作区ray/sh_test1目录中，含有100个子目录file1file100，还存在一个名为changefile.sh的文件，将其补完，以实现通过命令bashchangefile.sh，可以删除该目录内file71file100共计30个子目录，将file41file70共计30个子目录重命名为newfile41newfile70。[注意：评测时仅检测changefile.sh的正确性]要求按照要求完成后，最终提交的文件树图示如下(file下标只显示112，newfile 下标只显示4155)\n1`--sh_test1 2|--file1 3|--file10 4|--file11 5|--file12 6|--file2 7|--file3 8|--file4 9|--file5 10|--file6 11|--file7 12|--file8 13|--file9 14|--newfile41 15|--newfile42 16|--newfile43 17|--newfile44 18|--newfile45 19|--newfile46 20|--newfile47 21|--newfile48 22|--newfile49 23|--newfile50 24|--newfile51 25|--newfile52 26|--newfile53 27|--newfile54 28|--newfile55 29`--changefile.sh 30第二题最终提交的文件树 Exercise 0.3 Lab0第三道练习题包括以下一题，如果你完成且正确，即可获得12分。 1、在Lab0工作区的ray/sh_test2目录下，存在一个未补全的search.sh文件，将其补完，以实现通过命令bash search.shfile intresult，可以在当前目录下生成result文件，内容为file文件含有int字符串所在的行数，即若有多行含有int字符串需要全部输出。[注意：对于命令bashsearch.shfileintresult，file及result可为任何合法文件名称，int可为任何合法字符串，若已有result文件，则将其原有内容覆盖，匹配时大小写不忽略]要求按照要求完成后，result内显示样式如下(一个答案占一行)：\n139 2123 3134 4147 5344 6395 7446 8471 9735 10908 111207 121422 131574 141801 151822 161924 171940 181984 19 20第三题完成后结果 Exercise 0.4 Lab0第四道练习题包括以下两题，如果你均完成且正确，即可获得26分。\n1、在Lab0工作区的csc/code目录下，存在fibo.c、main.c，其中fibo.c有点小问题，还有一个未补全的modify.sh文件，将其补完，以实现通过命令bashmodify.shfibo.ccharint，可以将fibo.c中所有的char字符串更改为int字符串。[注意：对于命令bashmodify.sh fibo.ccharint，fibo.c可为任何合法文件名，char及int可以是任何字符串，评测时评测modify.sh的正确性，而不是检查修改后fibo.c的正确性]\n2、Lab0工作区的csc/code/fibo.c成功更换字段后(bashmodify.shfibo.ccharint)，现已有csc/Makefile和csc/code/Makefile，补全两个Makefile文件，要求在csc目录下通过命令make可在csc/code目录中生成fibo.o、main.o，在csc目录中生成可执行文件fibo，再输入命令makeclean后只删除两个.o文件。[注意：不能修改fibo.h和main.c文件中的内容，提交的文件中fibo.c必须是修改后正确的fibo.c，可执行文件fibo作用是输入一个整数n(从stdin输入n)，可以输出斐波那契数列前n项，每一项之间用空格分开。比如n=5，输出11235]要求成功使用脚本文件modify.sh修改fibo.c，实现使用make命令可以生成.o文件和可执行文件，再使用命令makeclean可以将.o文件删除，但保留fibo和.c文件。最终提交时文件中fibo和.o文件可有可无。\n1|--code 2| |--Makefile 3| |--fibo.c 4| |--fibo.o 5| |--main.c 6| |--main.o 7| `--modify.sh 8|--fibo 9|--include 10| `--fibo.h 11`--Makefile 12第四题make后文件树 13 14|-- code 15| |-- Makefile 16| |-- fibo.c 17| |-- main.c 18| `-- modify.sh 19|-- fibo 20|-- include 21| `-- fibo.h 22`-- Makefile 23第四题make clean 后文件树 开始写 做过pre实验(并且和贴主一样愚蠢，毫无基础的)的可以在之前的地方应该可以直接cd xxxxxxxx你的学号，直接来到git仓库的根目录，反正就是要到这个git仓库的根目录里，用 git branch 先看现在处于哪个分支，再用 git fetch origin 把新加的分支拿来，然后用 git branch -a 绿色的是现在的git分支，红色的是远程仓库里的保存好的其他分支，话说这个CLI经常有红色提示，但其实红色的消息不一定是危险，只是为了区分，危险一般会把错误和警告给出来，比如warning：。不过也不是所有warning都要管，做这个blog的时候无视了一堆warning(),其实和写代码不管warning差不多()。\nexercise 0.1 然后就开始补充 palindrome.c,我是先 cd src 然后 vim palindrome.c 就可以进去编辑了，vim的具体规则你自己去看吧，这里就说一下进入插入模式点“i”，退出点“esc”，退出插入模式(这里后面的都是英文输入，懒得切换了)后输入:w可以保存，:q可以退出，：wq保存并退出。\npalindrome.c 就是补全C程序很简单，就略过了，用vim可以写好直接粘贴过去，不过可能要处理一下缩进，但是改代码还是IDE里好改。(nano我就不知道了，本人用了一次连编辑都失败，就懒得尝试了，反正还是推荐vim，扩展性和便利性感觉还是比nano好(虽然我的cursor告诫我第一次用推荐用nano())) 仅供参考\n1int temp=n; 2int rev=0; 3while(n%10!=0){ 4 rev*=10; 5 rev+=n%10; 6 n=n/10; 7} 8if(temp==rev) Makefile 在guide book里写了应该怎么办，应该看一下都能看懂，或者直接问一下AI也很好懂，这里只要求一个目标和对应命令，我就说一下扩展的话就直接贴着写就行。\n1目标1: 依赖 2\t命令1 3目标2: 依赖 4\t命令2 5目标3: 6\t命令3 仅供参考\n1CC = gcc 2 3palindrome: palindrome.c 4\t$(CC) -o palindrome palindrome.c 未设置默认目标时，make指令不加参数直接运行第一个目标，用all：xxx可以自己指定没有参数时默认执行哪个目标。 然后就可以用make指令实现了。\nexercise0.2 第二个联系很简单啊，就是补全对应目录下的.sh文件，这个.sh就是shell文件，支持各种分支，以及指令参数就可以用$1，$2这种来表示($0 代表的是执行文件的名称，包括路径，就是你在写的这个.sh文件)\n参数 说明 $# 传递到脚本的参数个数 $* 以一个单字符串显示所有向脚本传递的参数。如 \"$*\" 用「\"」括起来的情况、以 \"$1 $2 … $n\" 的形式输出所有参数。 $$ 脚本运行的当前进程 ID 号 $! 后台运行的最后一个进程的 ID 号 $@ 与 $* 相同，但是使用时加引号，并在引号中返回每个参数。如 \"$@\" 用「\"」括起来的情况、以 \"$1\" \"$2\" … \"$n\" 的形式输出所有参数。 $- 显示 Shell 使用的当前选项，与 set 命令功能相同。 $? 显示最后命令的退出状态。0 表示没有错误，其他任何值表明有错误。 （本题暂时没用到）\n至于本题循环已经帮你写好了，其他部分其实很简单，就是在大于70的里写删除a这个文件夹，大于40里对文件夹名进行修改。因为文件夹非空而且不是文件啊，rmdir不行，rm需要选择-r递归删除来删除这个文件夹啊，并且名称就是file\"a\",对于处于双引号下的内容，会先进行展开再带入啊，所以这里要表现删除的是file“a”这个数所以可以用\"$a\"会先将$a变为数字再识别成文件名，当然输入后你看到$a变蓝色了，就说明这里它是被当成参数看待的，不是“$a”看情况不加括号也行。 那就很显然是\n1rm -r file$a 然后是改名字，用mv就行，\n1mv oldfilename newfilename 所以也很简单，就是mv file$a newfile$a。\nexercise0.3 我们先写好，$1是查询的文件，$2是要查询的字符串，$3是查询到的行放入的文件名 然后去看要做的事：改写 search.sh 文件使得$1中的所有包含$2的行数输入到$3中 串讲PPT里说的是用grep指令和awk指令来完成 首先是 grep 指令：\n1grep -n str file 就是从file中找到包含str的行数和该行的内容并输出到标准输出，所以我们就可以得到\n1grep -n \"$2\" \"$1\" 来获得若干行一串带行号的字符串，这里一定要加引号，不然$2和$1都会被识别成名字，只有带双引号才会先展开，然后才解析指令，这里我们得到的有多余的内容，就可以用awk指令来分割，awk -F指令可以按照F后紧跟着的符号来分割期望的每行输出，然后分割完的内容从前到后一个一个就是$1 $2这样来代指。’{}‘中的内容就是在这样做之后要执行的命令比如这里要输出行号而且末尾自动带换行，用\n1print $1 就可以实现，\n1print $1, $3 那么这两个输出的中间会是空格，每行末尾依旧是换行。 最后是输入到 $3 这个文件里，所以就是 grep 先进行后，输出传到awk命令，awk处理完再输入到$3里，那么很简单了，我们用管道定好方向，然后用\u003e重定向到$3就行，具体就是\n1grep -n \"$2\" \"$1\" | awk -F: '{print $1}' \u003e \"$3\" 其次 sed 也可以写这道题啊，sed -n可以把包含指定字符串的行挑选出来，然后选择输出什么信息，\n1sed -n '/str/=' file 里的=就是在说输出行号,-n其实也是在说关闭自动打印，不过也可以直接理解成标识符对应，而且要注意双引号来展开$2的内容，所以就是\n1sed -n \"/$2/=\" \"$1\" \u003e \"$3\" exercise0.4 第一题就是替换文件中的字段啊，也是很简单的命令\n1sed 's/old/new/' file 题目里输入的参数是\n1bash modify.sh fibo.c char int 所以$1是文件名，$2是old,$3是new，就是\n1sed \"s/$2/$3/\" \"$1\" 推荐\n1sed \"s/$2/$3/g\" \"$1\" 这样一行的所有都会被替换，第一种只会替换第一个 对于这个后缀，g=global，所以是全部替换，如果是数字n就是替换第n个，而ng就是从第n个开始替换到行尾。 还有前缀s，ns就是指只替换第n行，不换别的行，要是一个范围可以写成n，ms就是指替换从n到m行的old，如果是要求的是包含某些字符的行，就可以用\n1/str/s 就只会选择出现str的行来进行替换，如果是两种条件同时满足可以把包含str和一整句写在花括号里，行号写外面，或者用，分隔，如\n1sed '10{/x/s/old/new/}' file（或 sed '10,/x/s/old/new/' 等，视需求而定） 同时加-i标识符可以让输出不是标准输出而是改在文件里并保存，因为开文件看很麻烦，我建议大家可以先输出到标准输出，如果输出是对的，再加上-i就可以，-i.bak就是提前生成备份并保存。\n具体的类型表格放在下面。 替换范围：每行换几个\n写法 含义 示例（行内容 a b a b） s/old/new/ 每行只换第一个 OK b a b s/old/new/g 每行全部替换 OK b OK b s/old/new/2 只换每行第 2 个 a b OK b s/old/new/2g 从第 2 个开始到行尾都换 a b OK OK g = global，整行都换；数字 = 从第几个开始（或「第几个」视实现而定，常见是「从第 n 个起」）。 输出方式：改不改原文件\n用法 效果 sed 's/old/new/' file 只打印到终端/管道，不改 file sed -i 's/old/new/' file 直接改 file（原地修改） sed -i.bak 's/old/new/' file 先备份成 file.bak，再改 file 不加 -i：原文件不变，想看结果就重定向，例如 sed 's/old/new/' file \u003e newfile。 加 -i：原文件被改掉，没有“打印一份”的效果。 按行号：只改第 n 行\n1sed '5s/old/new/' file` → 只替换第 5 行的第一个 old。\n按行号范围：只改第 2～4 行\n1sed '2,4s/old/new/' file 按模式：只改包含某字符串的行\n1sed '/int/s/old/new/' file → 仅对含 int 的行做替换。\n组合：第 10 行且含 x 才换\n1sed '10{/x/s/old/new/}' file（或 sed '10,/x/s/old/new/' 等，视需求而定）。 常见对照小结\n需求 写法示例 每行只换第一个，只输出不改文件 sed 's/old/new/' file 每行全部替换，只输出 sed 's/old/new/g' file 直接改原文件 sed -i 's/old/new/g' file 改原文件并备份 sed -i.bak 's/old/new/g' file 只改第 3 行 sed '3s/old/new/' file 只改含 int 的行 sed '/int/s/old/new/' file 原/新里有 / \"sed 's/old/new/' file(换分隔符(这里打不出来))\" 用变量 sed \"s/$old/$new/g\" file 分隔符： 然后是第二问。 也是挺简单的，里层Makefile实现两个文件的.o文件的生成，在外层Makefile里链接生成可执行文件，并且有clean来实现清除code文件夹里的fibo.o和main.o。里层Makefile用\n1gcc -c XXX.c -o XXX.o 外层默认是生成可执行文件，所以我们把这个写在第一个，而且他没要求名字，不过建议就叫fibo因为这样会预先检查有没有可执行文件fibo，后面跟需要依赖的文件fibo.o和main.o这里可以直接把这个写成指令，就是fibo.o main.o:这样就会把依赖文件识别为这个操作有没有进行过，所以你也可以随便取名，比如fibo：CSC那么就是CSC：，这只是为了保证我们已经进行过.o文件的创建，而对应fibo.o main.o的依赖就是fibo.c main.c。这个编译的过程我们已经写好了，所以可以直接用make -C指令先cd 到code文件夹再make，就是\n1 fibo.o main.o: fibo.c main.c\\n\\tmake -C code 然后回到链接部分，\n1gcc -o fibo code/fibo.o code/main.o 就是这样按格式写就行，clean也很简单，你可以单纯指名道姓去删除，也可以直接*.o删除啊。记得把clean加进.PHONY里。下面展示一下代码\n1fibo: code/fibo.o code/main.o 2 gcc -o fibo code/fibo.o code/main.o 3code/fibo.o code/main.o: 4 $(MAKE) -C code 5.PHONY:clean 6clean: 7 rm -f code/fibo.o code/main.o 8#外层的 1all: fibo.o main.o 2fibo.o: fibo.c 3 gcc -I../include -c fibo.c -o fibo.o 4main.o: main.c 5 gcc -I../include -c main.c -o main.o ",
+  "wordCount" : "6155",
+  "inLanguage": "zh",
+  "datePublished": "2026-03-08T00:00:00+08:00",
+  "dateModified": "2026-03-08T00:00:00+08:00",
+  "author":{
+    "@type": "Person",
+    "name": "Lalalala-yeye"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://Lalalala-yeye.github.io/lalalalalalaal/post/os-lab0/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Lalalala-yeye's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://Lalalala-yeye.github.io/lalalalalalaal/favicon.png"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://Lalalala-yeye.github.io/lalalalalalaal/" accesskey="h" title="Lalalala-yeye&#39;s Blog (Alt + H)">Lalalala-yeye&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://Lalalala-yeye.github.io/lalalalalalaal/" title="Lalalala-yeye&#39;s Blog">
+                    <span>首页</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://Lalalala-yeye.github.io/lalalalalalaal/archives/" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://Lalalala-yeye.github.io/lalalalalalaal/categories/" title="Categories">
+                    <span>分类</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://Lalalala-yeye.github.io/lalalalalalaal/tags/" title="Tags">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://Lalalala-yeye.github.io/lalalalalalaal/search/" title="搜索">
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://Lalalala-yeye.github.io/lalalalalalaal/about/" title="关于">
+                    <span>关于</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      OS 课下实验Lab0
+    </h1>
+    <div class="post-meta"><span title='2026-03-08 00:00:00 +0800 CST'>2026年3月8日</span>&nbsp;·&nbsp;<span>Lalalala-yeye</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>OS lab0知识点和解题过程分享</p>
+<h1 id="os-lab0知识点和解题过程分享">OS lab0知识点和解题过程分享<a hidden class="anchor" aria-hidden="true" href="#os-lab0知识点和解题过程分享">#</a></h1>
+<p>首先没有经验的话大家还是尽量读完guide book再做题(<a href="../../files/guide-book%28lab0%e9%83%a8%e5%88%86%29.pdf" target="_blank" rel="noopener noreferrer">guide-book(lab0部分).pdf</a>
+)工具部分可以等lab0做完再看，不过还是建议早点看，毕竟vim，git仓库之类的可以大幅降低CLI编程和文件处理一开始的不适感，而且很方便。在教学内容-&gt;实验教学资料里有，也可以在给的 github 仓库里看一下代码，不过代码库是实时更新的，这里就不贴了。</p>
+<p>lab0 作为带大家熟悉 CLI(命令行)界面的编程，主要还是考察一些指令，在课程网站给出的 lab0 串讲(<a href="../../files/2026%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9fLab0%e4%b8%b2%e8%ae%b2.pdf" target="_blank" rel="noopener noreferrer">2026 操作系统 Lab0 串讲.pdf</a>
+)里也有提示，考察了C语言和gcc编译指令，sed，cp，shell，grep,基本上借助AI和看完指令都可以轻松解决，就不多说了。</p>
+<p>然后开始吧，做实验先去自动分支初始化，然后进入虚拟机等一样的步骤，这里不多说。</p>
+<p>主要过程放在labpre里(虽然写这篇的时候pre还没写(毕竟只是为了督促我自己写实验()))</p>
+<p>把题目贴在这里(神秘北航学生未选课录不进系统，神秘的假期预习根本看不了，要是有来预习的(真的会有吗)可以看这里)</p>
+<details>
+<summary>题目（点击展开）</summary>
+Exercise 0.1 Lab0 第一道练习题包括以下四题，如果你四道题全部完成且正确，即可获得50 分。
+<p>1、在Lab0 工作区的src 目录中，存在一个名为palindrome.c 的文件，使用刚刚学
+过的工具打开palindrome.c，使用 c 语言实现判断输入整数 n(1≤n≤10000) 是否为回
+文数的程序(输入输出部分已经完成)。通过stdin每次只输入一个整数n，若这个数字为
+回文数则输出Y，否则输出N。[注意：正读倒读相同的整数叫回文数]</p>
+<p>2、在src目录下，存在一个空白的Makefile文件，借助刚刚掌握的Makefile知识，
+将其补全，以实现通过make命令触发src目录下的palindrome.c文件的编译链接的功
+能，生成的可执行文件命名为palindrome。</p>
+<p>3、在src/sh_test目录下，有一个file文件和hello_os.sh文件。hello_os.sh是
+一个未完成的脚本文档，请同学们借助shell编程的知识，将其补完，以实现通过命令bash hello_os.shAAABBB，在hello_os.sh所处的目录新建一个名为BBB的文件，其内容为AAA文件的第8、32、128、512、1024行的内容提取(AAA文件行数一定超过1024行)。[注意：对于命令bashhello_os.sh AAABBB，AAA及BBB可为任何合法文件的名称，例如bashhello_os.sh filehello_os.c，若已有hello_os.c文件，则将其原有内容覆盖]</p>
+<p>4、补全后的palindrome.c、Makefile、hello_os.sh依次复制到路径dstpalindrome.c,dst/Makefile,dst/sh_test/hello_os.sh[注意：文件名和路径必须与题目要求相同]
+要求按照要求完成后，最终提交的文件树图示如下</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="ln"> 1</span><span class="cl">|--dst
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">| |--Makefile
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">| |--palindrome.c
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">| `--sh_test
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">| `--hello_os.sh
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">`--src
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">|--Makefile
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">|--palindrome.c
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">`--sh_test
+</span></span><span class="line"><span class="ln">10</span><span class="cl">|--file
+</span></span><span class="line"><span class="ln">11</span><span class="cl">`--hello_os.sh
+</span></span><span class="line"><span class="ln">12</span><span class="cl">第一题最终提交的文件树
+</span></span></code></pre></div><p>Exercise0.2 Lab0第二道练习题包括以下一题，如果你完成且正确，即可获得12分。</p>
+<p>1、在Lab0工作区ray/sh_test1目录中，含有100个子目录file1<del>file100，还存在一个名为changefile.sh的文件，将其补完，以实现通过命令bashchangefile.sh，可以删除该目录内file71</del>file100共计30个子目录，将file41<del>file70共计30个子目录重命名为newfile41</del>newfile70。[注意：评测时仅检测changefile.sh的正确性]要求按照要求完成后，最终提交的文件树图示如下(file下标只显示1<del>12，newfile
+下标只显示41</del>55)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="ln"> 1</span><span class="cl">`--sh_test1
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">|--file1
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">|--file10
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">|--file11
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">|--file12
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">|--file2
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">|--file3
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">|--file4
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">|--file5
+</span></span><span class="line"><span class="ln">10</span><span class="cl">|--file6
+</span></span><span class="line"><span class="ln">11</span><span class="cl">|--file7
+</span></span><span class="line"><span class="ln">12</span><span class="cl">|--file8
+</span></span><span class="line"><span class="ln">13</span><span class="cl">|--file9
+</span></span><span class="line"><span class="ln">14</span><span class="cl">|--newfile41
+</span></span><span class="line"><span class="ln">15</span><span class="cl">|--newfile42
+</span></span><span class="line"><span class="ln">16</span><span class="cl">|--newfile43
+</span></span><span class="line"><span class="ln">17</span><span class="cl">|--newfile44
+</span></span><span class="line"><span class="ln">18</span><span class="cl">|--newfile45
+</span></span><span class="line"><span class="ln">19</span><span class="cl">|--newfile46
+</span></span><span class="line"><span class="ln">20</span><span class="cl">|--newfile47
+</span></span><span class="line"><span class="ln">21</span><span class="cl">|--newfile48
+</span></span><span class="line"><span class="ln">22</span><span class="cl">|--newfile49
+</span></span><span class="line"><span class="ln">23</span><span class="cl">|--newfile50
+</span></span><span class="line"><span class="ln">24</span><span class="cl">|--newfile51
+</span></span><span class="line"><span class="ln">25</span><span class="cl">|--newfile52
+</span></span><span class="line"><span class="ln">26</span><span class="cl">|--newfile53
+</span></span><span class="line"><span class="ln">27</span><span class="cl">|--newfile54
+</span></span><span class="line"><span class="ln">28</span><span class="cl">|--newfile55
+</span></span><span class="line"><span class="ln">29</span><span class="cl">`--changefile.sh
+</span></span><span class="line"><span class="ln">30</span><span class="cl">第二题最终提交的文件树
+</span></span></code></pre></div><p>Exercise 0.3 Lab0第三道练习题包括以下一题，如果你完成且正确，即可获得12分。
+1、在Lab0工作区的ray/sh_test2目录下，存在一个未补全的search.sh文件，将其补完，以实现通过命令bash search.shfile intresult，可以在当前目录下生成result文件，内容为file文件含有int字符串所在的行数，即若有多行含有int字符串需要全部输出。[注意：对于命令bashsearch.shfileintresult，file及result可为任何合法文件名称，int可为任何合法字符串，若已有result文件，则将其原有内容覆盖，匹配时大小写不忽略]要求按照要求完成后，result内显示样式如下(一个答案占一行)：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="ln"> 1</span><span class="cl">39
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">123
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">134
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">147
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">344
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">395
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">446
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">471
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">735
+</span></span><span class="line"><span class="ln">10</span><span class="cl">908
+</span></span><span class="line"><span class="ln">11</span><span class="cl">1207
+</span></span><span class="line"><span class="ln">12</span><span class="cl">1422
+</span></span><span class="line"><span class="ln">13</span><span class="cl">1574
+</span></span><span class="line"><span class="ln">14</span><span class="cl">1801
+</span></span><span class="line"><span class="ln">15</span><span class="cl">1822
+</span></span><span class="line"><span class="ln">16</span><span class="cl">1924
+</span></span><span class="line"><span class="ln">17</span><span class="cl">1940
+</span></span><span class="line"><span class="ln">18</span><span class="cl">1984
+</span></span><span class="line"><span class="ln">19</span><span class="cl">
+</span></span><span class="line"><span class="ln">20</span><span class="cl">第三题完成后结果
+</span></span></code></pre></div><p>Exercise 0.4 Lab0第四道练习题包括以下两题，如果你均完成且正确，即可获得26分。</p>
+<p>1、在Lab0工作区的csc/code目录下，存在fibo.c、main.c，其中fibo.c有点小问题，还有一个未补全的modify.sh文件，将其补完，以实现通过命令bashmodify.shfibo.ccharint，可以将fibo.c中所有的char字符串更改为int字符串。[注意：对于命令bashmodify.sh fibo.ccharint，fibo.c可为任何合法文件名，char及int可以是任何字符串，评测时评测modify.sh的正确性，而不是检查修改后fibo.c的正确性]</p>
+<p>2、Lab0工作区的csc/code/fibo.c成功更换字段后(bashmodify.shfibo.ccharint)，现已有csc/Makefile和csc/code/Makefile，补全两个Makefile文件，要求在csc目录下通过命令make可在csc/code目录中生成fibo.o、main.o，在csc目录中生成可执行文件fibo，再输入命令makeclean后只删除两个.o文件。[注意：不能修改fibo.h和main.c文件中的内容，提交的文件中fibo.c必须是修改后正确的fibo.c，可执行文件fibo作用是输入一个整数n(从stdin输入n)，可以输出斐波那契数列前n项，每一项之间用空格分开。比如n=5，输出11235]要求成功使用脚本文件modify.sh修改fibo.c，实现使用make命令可以生成.o文件和可执行文件，再使用命令makeclean可以将.o文件删除，但保留fibo和.c文件。最终提交时文件中fibo和.o文件可有可无。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="ln"> 1</span><span class="cl">|--code
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">| |--Makefile
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">| |--fibo.c
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">| |--fibo.o
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">| |--main.c
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">| |--main.o
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">| `--modify.sh
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">|--fibo
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">|--include
+</span></span><span class="line"><span class="ln">10</span><span class="cl">| `--fibo.h
+</span></span><span class="line"><span class="ln">11</span><span class="cl">`--Makefile
+</span></span><span class="line"><span class="ln">12</span><span class="cl">第四题make后文件树
+</span></span><span class="line"><span class="ln">13</span><span class="cl">
+</span></span><span class="line"><span class="ln">14</span><span class="cl">|-- code
+</span></span><span class="line"><span class="ln">15</span><span class="cl">| |-- Makefile
+</span></span><span class="line"><span class="ln">16</span><span class="cl">| |-- fibo.c
+</span></span><span class="line"><span class="ln">17</span><span class="cl">| |-- main.c
+</span></span><span class="line"><span class="ln">18</span><span class="cl">| `-- modify.sh
+</span></span><span class="line"><span class="ln">19</span><span class="cl">|-- fibo
+</span></span><span class="line"><span class="ln">20</span><span class="cl">|-- include
+</span></span><span class="line"><span class="ln">21</span><span class="cl">| `-- fibo.h
+</span></span><span class="line"><span class="ln">22</span><span class="cl">`-- Makefile
+</span></span><span class="line"><span class="ln">23</span><span class="cl">第四题make clean 后文件树
+</span></span></code></pre></div></details>
+<h2 id="开始写">开始写<a hidden class="anchor" aria-hidden="true" href="#开始写">#</a></h2>
+<p>做过pre实验(并且和贴主一样愚蠢，毫无基础的)的可以在之前的地方应该可以直接cd xxxxxxxx你的学号，直接来到git仓库的根目录，反正就是要到这个git仓库的根目录里，用
+<code>git branch</code>
+先看现在处于哪个分支，再用
+<code>git fetch origin</code>
+把新加的分支拿来，然后用
+<code>git branch -a</code>
+绿色的是现在的git分支，红色的是远程仓库里的保存好的其他分支，话说这个CLI经常有红色提示，但其实红色的消息不一定是危险，只是为了区分，危险一般会把错误和警告给出来，比如<code>warning：</code>。不过也不是所有warning都要管，做这个blog的时候无视了一堆warning(),其实和写代码不管warning差不多()。</p>
+<h2 id="exercise-01">exercise 0.1<a hidden class="anchor" aria-hidden="true" href="#exercise-01">#</a></h2>
+<p>然后就开始补充 palindrome.c,我是先
+<code>cd src</code>
+然后
+<code>vim palindrome.c</code>
+就可以进去编辑了，vim的具体规则你自己去看吧，这里就说一下进入插入模式点“i”，退出点“esc”，退出插入模式(这里后面的都是英文输入，懒得切换了)后输入:w可以保存，:q可以退出，：wq保存并退出。</p>
+<h3 id="palindromec">palindrome.c<a hidden class="anchor" aria-hidden="true" href="#palindromec">#</a></h3>
+<p>就是补全C程序很简单，就略过了，用vim可以写好直接粘贴过去，不过可能要处理一下缩进，但是改代码还是IDE里好改。(nano我就不知道了，本人用了一次连编辑都失败，就懒得尝试了，反正还是推荐vim，扩展性和便利性感觉还是比nano好(虽然我的cursor告诫我第一次用推荐用nano()))
+仅供参考</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="ln">1</span><span class="cl"><span class="kt">int</span> <span class="n">temp</span><span class="o">=</span><span class="n">n</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="kt">int</span> <span class="n">rev</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="k">while</span><span class="p">(</span><span class="n">n</span><span class="o">%</span><span class="mi">10</span><span class="o">!=</span><span class="mi">0</span><span class="p">){</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl">    <span class="n">rev</span><span class="o">*=</span><span class="mi">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl">    <span class="n">rev</span><span class="o">+=</span><span class="n">n</span><span class="o">%</span><span class="mi">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">6</span><span class="cl">    <span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="o">/</span><span class="mi">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">7</span><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="ln">8</span><span class="cl"><span class="k">if</span><span class="p">(</span><span class="n">temp</span><span class="o">==</span><span class="n">rev</span><span class="p">)</span>
+</span></span></code></pre></div><h3 id="makefile">Makefile<a hidden class="anchor" aria-hidden="true" href="#makefile">#</a></h3>
+<p>在guide book里写了应该怎么办，应该看一下都能看懂，或者直接问一下AI也很好懂，这里只要求一个目标和对应命令，我就说一下扩展的话就直接贴着写就行。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">目标1</span><span class="o">:</span> 依赖
+</span></span><span class="line"><span class="ln">2</span><span class="cl">	命令1
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="nf">目标2</span><span class="o">:</span> 依赖
+</span></span><span class="line"><span class="ln">4</span><span class="cl">	命令2
+</span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="nf">目标3</span><span class="o">:</span>
+</span></span><span class="line"><span class="ln">6</span><span class="cl">	命令3
+</span></span></code></pre></div><p>仅供参考</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="ln">1</span><span class="cl"><span class="nv">CC</span> <span class="o">=</span> gcc
+</span></span><span class="line"><span class="ln">2</span><span class="cl">
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="nf">palindrome</span><span class="o">:</span> <span class="n">palindrome</span>.<span class="n">c</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl">	<span class="k">$(</span>CC<span class="k">)</span> -o palindrome palindrome.c
+</span></span></code></pre></div><p>未设置默认目标时，make指令不加参数直接运行第一个目标，用all：xxx可以自己指定没有参数时默认执行哪个目标。
+然后就可以用make指令实现了。</p>
+<h3 id="exercise02">exercise0.2<a hidden class="anchor" aria-hidden="true" href="#exercise02">#</a></h3>
+<p>第二个联系很简单啊，就是补全对应目录下的.sh文件，这个.sh就是shell文件，支持各种分支，以及指令参数就可以用$1，$2这种来表示($0 代表的是执行文件的名称，包括路径，就是你在写的这个.sh文件)</p>
+<table>
+  <thead>
+      <tr>
+          <th>参数</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>$#</code></td>
+          <td>传递到脚本的参数个数</td>
+      </tr>
+      <tr>
+          <td><code>$*</code></td>
+          <td>以一个单字符串显示所有向脚本传递的参数。如 <code>&quot;$*&quot;</code> 用「&quot;」括起来的情况、以 <code>&quot;$1 $2 … $n&quot;</code> 的形式输出所有参数。</td>
+      </tr>
+      <tr>
+          <td><code>$$</code></td>
+          <td>脚本运行的当前进程 ID 号</td>
+      </tr>
+      <tr>
+          <td><code>$!</code></td>
+          <td>后台运行的最后一个进程的 ID 号</td>
+      </tr>
+      <tr>
+          <td><code>$@</code></td>
+          <td>与 <code>$*</code> 相同，但是使用时加引号，并在引号中返回每个参数。如 <code>&quot;$@&quot;</code> 用「&quot;」括起来的情况、以 <code>&quot;$1&quot; &quot;$2&quot; … &quot;$n&quot;</code> 的形式输出所有参数。</td>
+      </tr>
+      <tr>
+          <td><code>$-</code></td>
+          <td>显示 Shell 使用的当前选项，与 set 命令功能相同。</td>
+      </tr>
+      <tr>
+          <td><code>$?</code></td>
+          <td>显示最后命令的退出状态。0 表示没有错误，其他任何值表明有错误。</td>
+      </tr>
+  </tbody>
+</table>
+<p>（本题暂时没用到）</p>
+<p>至于本题循环已经帮你写好了，其他部分其实很简单，就是在大于70的里写删除a这个文件夹，大于40里对文件夹名进行修改。因为文件夹非空而且不是文件啊，<code>rmdir</code>不行，<code>rm</code>需要选择<code>-r</code>递归删除来删除这个文件夹啊，并且名称就是<code>file&quot;a&quot;</code>,对于处于双引号下的内容，会先进行展开再带入啊，所以这里要表现删除的是<code>file“a”</code>这个数所以可以用<code>&quot;$a&quot;</code>会先将<code>$a</code>变为数字再识别成文件名，当然输入后你看到<code>$a</code>变蓝色了，就说明这里它是被当成参数看待的，不是<code>“$a”</code>看情况不加括号也行。
+那就很显然是</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="ln">1</span><span class="cl"><span class="err">rm</span> <span class="err">-r</span> <span class="err">file$a</span>
+</span></span></code></pre></div><p>然后是改名字，用mv就行，</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="ln">1</span><span class="cl"><span class="err">mv</span> <span class="err">oldfilename</span> <span class="err">newfilename</span>
+</span></span></code></pre></div><p>所以也很简单，就是mv file$a newfile$a。</p>
+<h3 id="exercise03">exercise0.3<a hidden class="anchor" aria-hidden="true" href="#exercise03">#</a></h3>
+<p>我们先写好，$1是查询的文件，$2是要查询的字符串，$3是查询到的行放入的文件名
+然后去看要做的事：改写 search.sh 文件使得$1中的所有包含$2的行数输入到$3中
+串讲PPT里说的是用grep指令和awk指令来完成
+首先是 grep 指令：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="ln">1</span><span class="cl"><span class="err">grep</span> <span class="err">-n</span> <span class="err">str</span> <span class="err">file</span>
+</span></span></code></pre></div><p>就是从file中找到包含str的行数和该行的内容并输出到标准输出，所以我们就可以得到</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="ln">1</span><span class="cl"><span class="err">grep</span> <span class="err">-n</span> <span class="s2">&#34;$2&#34;</span> <span class="s2">&#34;$1&#34;</span>
+</span></span></code></pre></div><p>来获得若干行一串带行号的字符串，这里一定要加引号，不然$2和$1都会被识别成名字，只有带双引号才会先展开，然后才解析指令，这里我们得到的有多余的内容，就可以用awk指令来分割，awk -F指令可以按照F后紧跟着的符号来分割期望的每行输出，然后分割完的内容从前到后一个一个就是$1 $2这样来代指。&rsquo;{}&lsquo;中的内容就是在这样做之后要执行的命令比如这里要输出行号而且末尾自动带换行，用</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="ln">1</span><span class="cl"><span class="err">print</span> <span class="err">$1</span>
+</span></span></code></pre></div><p>就可以实现，</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="ln">1</span><span class="cl"><span class="err">print</span> <span class="err">$1,</span> <span class="err">$3</span>
+</span></span></code></pre></div><p>那么这两个输出的中间会是空格，每行末尾依旧是换行。
+最后是输入到 $3 这个文件里，所以就是 grep 先进行后，输出传到awk命令，awk处理完再输入到$3里，那么很简单了，我们用管道定好方向，然后用&gt;重定向到$3就行，具体就是</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">grep -n &#34;$2&#34; &#34;$1&#34; | awk -F</span><span class="o">:</span> &#39;{<span class="n">print</span> $1}&#39; &gt; &#34;$3&#34;
+</span></span></code></pre></div><p>其次 sed 也可以写这道题啊，<code>sed -n</code>可以把包含指定字符串的行挑选出来，然后选择输出什么信息，</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="ln">1</span><span class="cl"><span class="err">sed</span> <span class="err">-n</span> <span class="s1">&#39;/str/=&#39;</span> <span class="err">file</span>
+</span></span></code></pre></div><p>里的=就是在说输出行号,-n其实也是在说关闭自动打印，不过也可以直接理解成标识符对应，而且要注意双引号来展开$2的内容，所以就是</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="ln">1</span><span class="cl"><span class="err">sed</span> <span class="err">-n</span> <span class="s2">&#34;/$2/=&#34;</span> <span class="s2">&#34;$1&#34;</span> <span class="err">&gt;</span> <span class="s2">&#34;$3&#34;</span>
+</span></span></code></pre></div><h3 id="exercise04">exercise0.4<a hidden class="anchor" aria-hidden="true" href="#exercise04">#</a></h3>
+<p>第一题就是替换文件中的字段啊，也是很简单的命令</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="ln">1</span><span class="cl"><span class="err">sed</span> <span class="s1">&#39;s/old/new/&#39;</span> <span class="err">file</span>
+</span></span></code></pre></div><p>题目里输入的参数是</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="ln">1</span><span class="cl"><span class="err">bash</span> <span class="err">modify.sh</span> <span class="err">fibo.c</span> <span class="err">char</span> <span class="err">int</span>
+</span></span></code></pre></div><p>所以$1是文件名，$2是old,$3是new，就是</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="ln">1</span><span class="cl"><span class="err">sed</span> <span class="s2">&#34;s/$2/$3/&#34;</span> <span class="s2">&#34;$1&#34;</span>
+</span></span></code></pre></div><p>推荐</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="ln">1</span><span class="cl"><span class="err">sed</span> <span class="s2">&#34;s/$2/$3/g&#34;</span> <span class="s2">&#34;$1&#34;</span>
+</span></span></code></pre></div><p>这样一行的所有都会被替换，第一种只会替换第一个
+对于这个后缀，g=global，所以是全部替换，如果是数字n就是替换第n个，而ng就是从第n个开始替换到行尾。
+还有前缀s，ns就是指只替换第n行，不换别的行，要是一个范围可以写成n，ms就是指替换从n到m行的old，如果是要求的是包含某些字符的行，就可以用</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="ln">1</span><span class="cl"><span class="err">/str/s</span>
+</span></span></code></pre></div><p>就只会选择出现str的行来进行替换，如果是两种条件同时满足可以把包含str和一整句写在花括号里，行号写外面，或者用，分隔，如</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="ln">1</span><span class="cl"><span class="err">sed</span> <span class="s1">&#39;10{/x/s/old/new/}&#39;</span> <span class="err">file（或</span> <span class="err">sed</span> <span class="s1">&#39;10,/x/s/old/new/&#39;</span> <span class="err">等，视需求而定）</span>
+</span></span></code></pre></div><p>同时加-i标识符可以让输出不是标准输出而是改在文件里并保存，因为开文件看很麻烦，我建议大家可以先输出到标准输出，如果输出是对的，再加上<code>-i</code>就可以，<code>-i.bak</code>就是提前生成备份并保存。</p>
+<p>具体的类型表格放在下面。
+<strong>替换范围：每行换几个</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>写法</th>
+          <th>含义</th>
+          <th>示例（行内容 a b a b）</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>s/old/new/</code></td>
+          <td>每行只换第一个</td>
+          <td>OK b a b</td>
+      </tr>
+      <tr>
+          <td><code>s/old/new/g</code></td>
+          <td>每行全部替换</td>
+          <td>OK b OK b</td>
+      </tr>
+      <tr>
+          <td><code>s/old/new/2</code></td>
+          <td>只换每行第 2 个</td>
+          <td>a b OK b</td>
+      </tr>
+      <tr>
+          <td><code>s/old/new/2g</code></td>
+          <td>从第 2 个开始到行尾都换</td>
+          <td>a b OK OK</td>
+      </tr>
+      <tr>
+          <td>g = global，整行都换；数字 = 从第几个开始（或「第几个」视实现而定，常见是「从第 n 个起」）。</td>
+          <td></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>输出方式：改不改原文件</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>用法</th>
+          <th>效果</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>sed 's/old/new/' file</code></td>
+          <td>只打印到终端/管道，不改 file</td>
+      </tr>
+      <tr>
+          <td><code>sed -i 's/old/new/' file</code></td>
+          <td>直接改 file（原地修改）</td>
+      </tr>
+      <tr>
+          <td><code>sed -i.bak 's/old/new/' file</code></td>
+          <td>先备份成 file.bak，再改 file</td>
+      </tr>
+      <tr>
+          <td>不加 <code>-i</code>：原文件不变，想看结果就重定向，例如 <code>sed 's/old/new/' file &gt; newfile</code>。</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>加 <code>-i</code>：原文件被改掉，没有“打印一份”的效果。</td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<p>按行号：只改第 n 行</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="ln">1</span><span class="cl"><span class="err">sed</span> <span class="s1">&#39;5s/old/new/&#39;</span> <span class="err">file`</span>
+</span></span></code></pre></div><p>→ 只替换第 5 行的第一个 old。</p>
+<p>按行号范围：只改第 2～4 行</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="ln">1</span><span class="cl"><span class="err">sed</span> <span class="s1">&#39;2,4s/old/new/&#39;</span> <span class="err">file</span>
+</span></span></code></pre></div><p>按模式：只改包含某字符串的行</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="ln">1</span><span class="cl"><span class="err">sed</span> <span class="s1">&#39;/int/s/old/new/&#39;</span> <span class="err">file</span>
+</span></span></code></pre></div><p>→ 仅对含 int 的行做替换。</p>
+<p>组合：第 10 行且含 x 才换</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="ln">1</span><span class="cl"><span class="err">sed</span> <span class="s1">&#39;10{/x/s/old/new/}&#39;</span> <span class="err">file（或</span> <span class="err">sed</span> <span class="s1">&#39;10,/x/s/old/new/&#39;</span> <span class="err">等，视需求而定）。</span>
+</span></span></code></pre></div><p><strong>常见对照小结</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>需求</th>
+          <th>写法示例</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>每行只换第一个，只输出不改文件</td>
+          <td><code>sed 's/old/new/' file</code></td>
+      </tr>
+      <tr>
+          <td>每行全部替换，只输出</td>
+          <td><code>sed 's/old/new/g' file</code></td>
+      </tr>
+      <tr>
+          <td>直接改原文件</td>
+          <td><code>sed -i 's/old/new/g' file</code></td>
+      </tr>
+      <tr>
+          <td>改原文件并备份</td>
+          <td><code>sed -i.bak 's/old/new/g' file</code></td>
+      </tr>
+      <tr>
+          <td>只改第 3 行</td>
+          <td><code>sed '3s/old/new/' file</code></td>
+      </tr>
+      <tr>
+          <td>只改含 int 的行</td>
+          <td><code>sed '/int/s/old/new/' file</code></td>
+      </tr>
+      <tr>
+          <td>原/新里有 /</td>
+          <td><code>&quot;sed 's/old/new/' file(换分隔符(这里打不出来))&quot;</code></td>
+      </tr>
+      <tr>
+          <td>用变量</td>
+          <td><code>sed &quot;s/$old/$new/g&quot; file</code></td>
+      </tr>
+      <tr>
+          <td>分隔符：</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>然后是第二问。</td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<p>也是挺简单的，里层Makefile实现两个文件的.o文件的生成，在外层Makefile里链接生成可执行文件，并且有clean来实现清除code文件夹里的fibo.o和main.o。里层Makefile用</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="ln">1</span><span class="cl"><span class="err">gcc</span> <span class="err">-c</span> <span class="err">XXX.c</span> <span class="err">-o</span> <span class="err">XXX.o</span>
+</span></span></code></pre></div><p>外层默认是生成可执行文件，所以我们把这个写在第一个，而且他没要求名字，不过建议就叫fibo因为这样会预先检查有没有可执行文件fibo，后面跟需要依赖的文件fibo.o和main.o这里可以直接把这个写成指令，就是fibo.o main.o:这样就会把依赖文件识别为这个操作有没有进行过，所以你也可以随便取名，比如fibo：CSC那么就是CSC：，这只是为了保证我们已经进行过.o文件的创建，而对应fibo.o main.o的依赖就是fibo.c main.c。这个编译的过程我们已经写好了，所以可以直接用make -C指令先cd 到code文件夹再make，就是</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="ln">1</span><span class="cl"> fibo.o main.o: fibo.c main.c<span class="se">\n\t</span>make -C code
+</span></span></code></pre></div><p>然后回到链接部分，</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="ln">1</span><span class="cl"><span class="err">gcc</span> <span class="err">-o</span> <span class="err">fibo</span> <span class="err">code/fibo.o</span> <span class="err">code/main.o</span>
+</span></span></code></pre></div><p>就是这样按格式写就行，clean也很简单，你可以单纯指名道姓去删除，也可以直接*.o删除啊。记得把clean加进.PHONY里。下面展示一下代码</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">fibo</span><span class="o">:</span> <span class="n">code</span>/<span class="n">fibo</span>.<span class="n">o</span> <span class="n">code</span>/<span class="n">main</span>.<span class="n">o</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">        gcc -o fibo code/fibo.o code/main.o
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="nf">code/fibo.o code/main.o</span><span class="o">:</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl">        <span class="k">$(</span>MAKE<span class="k">)</span> -C code
+</span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="nf">.PHONY</span><span class="o">:</span><span class="n">clean</span>
+</span></span><span class="line"><span class="ln">6</span><span class="cl"><span class="nf">clean</span><span class="o">:</span>
+</span></span><span class="line"><span class="ln">7</span><span class="cl">    	rm -f code/fibo.o code/main.o
+</span></span><span class="line"><span class="ln">8</span><span class="cl"><span class="c">#外层的                                         
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">all</span><span class="o">:</span> <span class="n">fibo</span>.<span class="n">o</span> <span class="n">main</span>.<span class="n">o</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="nf">fibo.o</span><span class="o">:</span> <span class="n">fibo</span>.<span class="n">c</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl">        gcc -I../include -c fibo.c -o fibo.o
+</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="nf">main.o</span><span class="o">:</span> <span class="n">main</span>.<span class="n">c</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl">        gcc -I../include -c main.c -o main.o
+</span></span></code></pre></div>
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://Lalalala-yeye.github.io/lalalalalalaal/tags/os/">OS</a></li>
+      <li><a href="https://Lalalala-yeye.github.io/lalalalalalaal/tags/soft-where/">Soft Where</a></li>
+      <li><a href="https://Lalalala-yeye.github.io/lalalalalalaal/tags/%E5%AD%A6%E4%B9%A0%E5%88%86%E4%BA%AB/">学习分享</a></li>
+    </ul>
+  </footer><div id="tw-comment"></div>
+<script>
+    
+    const getStoredTheme = () => localStorage.getItem("pref-theme") === "light" ? "light" : "dark";
+    const setGiscusTheme = () => {
+        const sendMessage = (message) => {
+            const iframe = document.querySelector('iframe.giscus-frame');
+            if (iframe) {
+                iframe.contentWindow.postMessage({giscus: message}, 'https://giscus.app');
+            }
+        }
+        sendMessage({setConfig: {theme: getStoredTheme()}})
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const giscusAttributes = {
+            "src": "https://giscus.app/client.js",
+            "data-repo": "Lalalala-yeye\/lalalalalalaal",
+            "data-repo-id": "xxxxxx",
+            "data-category": "Announcements",
+            "data-category-id": "xxxxx",
+            "data-mapping": "pathname",
+            "data-strict": "0",
+            "data-reactions-enabled": "1",
+            "data-emit-metadata": "0",
+            "data-input-position": "bottom",
+            "data-theme": getStoredTheme(),
+            "data-lang": "zh-CN",
+            "data-loading": "lazy",
+            "crossorigin": "anonymous",
+        };
+
+        
+        const giscusScript = document.createElement("script");
+        Object.entries(giscusAttributes).forEach(
+                ([key, value]) => giscusScript.setAttribute(key, value));
+        document.querySelector("#tw-comment").appendChild(giscusScript);
+
+        
+        const themeSwitcher = document.querySelector("#theme-toggle");
+        if (themeSwitcher) {
+            themeSwitcher.addEventListener("click", setGiscusTheme);
+        }
+        const themeFloatSwitcher = document.querySelector("#theme-toggle-float");
+        if (themeFloatSwitcher) {
+            themeFloatSwitcher.addEventListener("click", setGiscusTheme);
+        }
+    });
+</script>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span><a href="https://Lalalala-yeye.github.io/" target="_blank" rel="noopener noreferrer">©1999 Lalalala-yeye&rsquo;s Blog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

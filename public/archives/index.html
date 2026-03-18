@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="zh" dir="auto" data-theme="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>归档 | Lalalala-yeye&#39;s Blog</title>
 <meta name="keywords" content="">
 <meta name="description" content="archives">
 <meta name="author" content="Lalalala-yeye">
-<link rel="canonical" href="http://localhost:1313/archives/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.f853413c40eb7305531c7e0da00541a78c86d9131bc2339014d89f0c00badf61.css" integrity="sha256-&#43;FNBPEDrcwVTHH4NoAVBp4yG2RMbwjOQFNifDAC632E=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.png">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/favicon.png">
-<link rel="mask-icon" href="http://localhost:1313/favicon.png">
+<link rel="canonical" href="https://Lalalala-yeye.github.io/lalalalalalaal/archives/">
+<link crossorigin="anonymous" href="/lalalalalalaal/assets/css/stylesheet.ea067b369d1f59469118831dbdecabb987d11b19478cc60348c49cbcfa141b70.css" integrity="sha256-6gZ7Np0fWUaRGIMdveyruYfRGxlHjMYDSMScvPoUG3A=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://Lalalala-yeye.github.io/lalalalalalaal/favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://Lalalala-yeye.github.io/lalalalalalaal/favicon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://Lalalala-yeye.github.io/lalalalalalaal/favicon.png">
+<link rel="apple-touch-icon" href="https://Lalalala-yeye.github.io/lalalalalalaal/favicon.png">
+<link rel="mask-icon" href="https://Lalalala-yeye.github.io/lalalalalalaal/favicon.png">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="zh" href="http://localhost:1313/archives/">
+<link rel="alternate" hreflang="zh" href="https://Lalalala-yeye.github.io/lalalalalalaal/archives/">
 <noscript>
     <style>
         #theme-toggle,
@@ -75,6 +75,21 @@
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
 <style>
  
+.post-content pre,
+.post-content code,
+.post-content .highlight pre,
+.post-content .highlight code,
+.post-content .highlight pre code,
+.highlight pre.chroma code {
+  font-family: "JetBrains Mono", "Fira Code", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace !important;
+}
+ 
+.post-content .highlight pre code,
+.post-content .highlight pre.chroma code {
+  color: inherit !important;
+}
+
+ 
 html[data-theme="light"] {
   --theme: #f5ecd8;
   --entry: rgba(251, 245, 227, 0.85);
@@ -84,7 +99,7 @@ html[data-theme="light"] {
 html[data-theme="light"],
 html[data-theme="light"] body {
   background-color: #f5ecd8;                  
-  background-image: url("/img/");
+  background-image: url('https://Lalalala-yeye.github.io/lalalalalalaal/img/');
   background-size: cover;                     
   background-repeat: no-repeat;               
   background-attachment: fixed;               
@@ -119,7 +134,7 @@ html[data-theme="dark"] {
 html[data-theme="dark"],
 html[data-theme="dark"] body {
   background-color: rgb(45, 37, 23);          
-  background-image: url("/img/paper-texture.png");
+  background-image: url('https://Lalalala-yeye.github.io/lalalalalalaal/img/paper-texture.png');
   background-size: cover;                     
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -147,7 +162,11 @@ html[data-theme="dark"] .main {
   border-radius: var(--radius) !important;
   box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06) !important;
 }
-
+ 
+html[data-theme="light"] .main:has(.archive-year) {
+  background: transparent !important;
+  box-shadow: none !important;
+}
  
 .main .post-entry {
   padding: 28px 36px 28px 44px !important;
@@ -302,13 +321,118 @@ html[data-theme="dark"] {
 .post-single {
   padding: 28px 40px 36px 48px !important;
 }
+
+ 
+.post-single details {
+  margin: 1em 0 !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+}
+.post-single details:not([open]) {
+  border: 1px solid var(--border) !important;
+  background: var(--entry) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+}
+.post-single details[open] {
+  border: 1px solid var(--border) !important;
+  background: var(--entry) !important;
+}
+.post-single details summary {
+  padding: 0.6em 1em !important;
+  cursor: pointer !important;
+  font-weight: 600 !important;
+  list-style: none !important;
+  user-select: none !important;
+}
+.post-single details summary::-webkit-details-marker { display: none !important; }
+.post-single details summary::marker { content: none !important; }
+ 
+html[data-theme="light"] .post-single details:not([open]) summary {
+  background: rgba(232, 220, 200, 0.9) !important;
+  color: #5c4a2a !important;
+  border-bottom: 1px solid #e2d3b4 !important;
+}
+html[data-theme="light"] .post-single details[open] summary {
+  background: rgba(232, 220, 200, 0.6) !important;
+  color: #5c4a2a !important;
+  border-bottom: 1px solid #e2d3b4 !important;
+}
+ 
+html[data-theme="dark"] .post-single details:not([open]) summary {
+  background: rgba(55, 56, 60, 0.95) !important;
+  color: #da9c50 !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+html[data-theme="dark"] .post-single details[open] summary {
+  background: rgba(45, 46, 50, 0.8) !important;
+  color: #da9c50 !important;
+  border-bottom: 1px solid var(--border) !important;
+}
 </style>
+<meta property="og:url" content="https://Lalalala-yeye.github.io/lalalalalalaal/archives/">
+  <meta property="og:site_name" content="Lalalala-yeye&#39;s Blog">
+  <meta property="og:title" content="归档">
+  <meta property="og:description" content="archives">
+  <meta property="og:locale" content="zh-cn">
+  <meta property="og:type" content="article">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="归档">
+<meta name="twitter:description" content="archives">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "归档",
+      "item": "https://Lalalala-yeye.github.io/lalalalalalaal/archives/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "归档",
+  "name": "归档",
+  "description": "archives",
+  "keywords": [
+    
+  ],
+  "articleBody": "",
+  "wordCount" : "0",
+  "inLanguage": "zh",
+  "datePublished": "0001-01-01T00:00:00Z",
+  "dateModified": "0001-01-01T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Lalalala-yeye"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://Lalalala-yeye.github.io/lalalalalalaal/archives/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Lalalala-yeye's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://Lalalala-yeye.github.io/lalalalalalaal/favicon.png"
+    }
+  }
+}
+</script>
 </head>
 <body class="list" id="top">
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="Lalalala-yeye&#39;s Blog (Alt + H)">Lalalala-yeye&#39;s Blog</a>
+            <a href="https://Lalalala-yeye.github.io/lalalalalalaal/" accesskey="h" title="Lalalala-yeye&#39;s Blog (Alt + H)">Lalalala-yeye&#39;s Blog</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -334,32 +458,32 @@ html[data-theme="dark"] {
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/" title="Lalalala-yeye&#39;s Blog">
+                <a href="https://Lalalala-yeye.github.io/lalalalalalaal/" title="Lalalala-yeye&#39;s Blog">
                     <span>首页</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/archives/" title="归档">
+                <a href="https://Lalalala-yeye.github.io/lalalalalalaal/archives/" title="归档">
                     <span class="active">归档</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/" title="Categories">
+                <a href="https://Lalalala-yeye.github.io/lalalalalalaal/categories/" title="Categories">
                     <span>分类</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
+                <a href="https://Lalalala-yeye.github.io/lalalalalalaal/tags/" title="Tags">
                     <span>标签</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/search/" title="搜索">
+                <a href="https://Lalalala-yeye.github.io/lalalalalalaal/search/" title="搜索">
                     <span>搜索</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/about/" title="关于">
+                <a href="https://Lalalala-yeye.github.io/lalalalalalaal/about/" title="关于">
                     <span>关于</span>
                 </a>
             </li>
@@ -376,19 +500,49 @@ html[data-theme="dark"] {
 <div class="archive-year">
   <h2 class="archive-year-header" id="2026">
     <a class="archive-header-link" href="#2026">2026</a>
-    <sup class="archive-count">&nbsp;1</sup>
+    <sup class="archive-count">&nbsp;6</sup>
   </h2>
   <div class="archive-month">
     <h3 class="archive-month-header" id="2026-三月">
       <a class="archive-header-link" href="#2026-%e4%b8%89%e6%9c%88">三月</a>
-      <sup class="archive-count">&nbsp;1</sup>
+      <sup class="archive-count">&nbsp;6</sup>
     </h3>
     <div class="archive-posts">
+      <div class="archive-entry">
+        <h3 class="archive-entry-title entry-hint-parent">Linux 基础指令与 grep/awk/sed &amp; Shell/Makefile 总结
+        </h3>
+        <div class="archive-meta"><span title='2026-03-18 00:00:00 +0800 CST'>2026年3月18日</span>&nbsp;·&nbsp;<span>Lalalala-yeye</span></div>
+        <a class="entry-link" aria-label="post link to Linux 基础指令与 grep/awk/sed & Shell/Makefile 总结" href="https://Lalalala-yeye.github.io/lalalalalalaal/post/linux-tools-note/"></a>
+      </div>
+      <div class="archive-entry">
+        <h3 class="archive-entry-title entry-hint-parent">OS pre
+        </h3>
+        <div class="archive-meta"><span title='2026-03-08 00:00:00 +0800 CST'>2026年3月8日</span>&nbsp;·&nbsp;<span>Lalalala-yeye</span></div>
+        <a class="entry-link" aria-label="post link to OS pre" href="https://Lalalala-yeye.github.io/lalalalalalaal/post/os-pre/"></a>
+      </div>
+      <div class="archive-entry">
+        <h3 class="archive-entry-title entry-hint-parent">OS 课下实验Lab0
+        </h3>
+        <div class="archive-meta"><span title='2026-03-08 00:00:00 +0800 CST'>2026年3月8日</span>&nbsp;·&nbsp;<span>Lalalala-yeye</span></div>
+        <a class="entry-link" aria-label="post link to OS 课下实验Lab0" href="https://Lalalala-yeye.github.io/lalalalalalaal/post/os-lab0/"></a>
+      </div>
+      <div class="archive-entry">
+        <h3 class="archive-entry-title entry-hint-parent">SE Lab1
+        </h3>
+        <div class="archive-meta"><span title='2026-03-08 00:00:00 +0800 CST'>2026年3月8日</span>&nbsp;·&nbsp;<span>Lalalala-yeye</span></div>
+        <a class="entry-link" aria-label="post link to SE Lab1" href="https://Lalalala-yeye.github.io/lalalalalalaal/post/se-lab1/"></a>
+      </div>
+      <div class="archive-entry">
+        <h3 class="archive-entry-title entry-hint-parent">学校概念模型 E-R 图
+        </h3>
+        <div class="archive-meta"><span title='2026-03-08 00:00:00 +0800 CST'>2026年3月8日</span>&nbsp;·&nbsp;<span>Lalalala-yeye</span></div>
+        <a class="entry-link" aria-label="post link to 学校概念模型 E-R 图" href="https://Lalalala-yeye.github.io/lalalalalalaal/post/school-er-diagram/"></a>
+      </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">YEYEYEYEYEYEYEYEYYEEY
         </h3>
         <div class="archive-meta"><span title='2026-03-03 11:13:42 +0800 CST'>2026年3月3日</span>&nbsp;·&nbsp;<span>Lalalala-yeye</span></div>
-        <a class="entry-link" aria-label="post link to YEYEYEYEYEYEYEYEYYEEY" href="http://localhost:1313/post/lalalalalalala/"></a>
+        <a class="entry-link" aria-label="post link to YEYEYEYEYEYEYEYEYYEEY" href="https://Lalalala-yeye.github.io/lalalalalalaal/post/lalalalalalala/"></a>
       </div>
     </div>
   </div>
@@ -396,7 +550,7 @@ html[data-theme="dark"] {
     </main>
     
 <footer class="footer">
-        <span><a href="https://Lalalala-yeye.github.io/">©1999 Lalalala-yeye&rsquo;s Blog</a></span> · 
+        <span><a href="https://Lalalala-yeye.github.io/" target="_blank" rel="noopener noreferrer">©1999 Lalalala-yeye&rsquo;s Blog</a></span> · 
 
     <span>
         Powered by

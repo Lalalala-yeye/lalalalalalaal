@@ -2,25 +2,116 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Tags on Lalalala-yeye&#39;s Blog</title>
-    <link>http://localhost:1313/tags/</link>
+    <link>https://Lalalala-yeye.github.io/lalalalalalaal/tags/</link>
     <description>Recent content in Tags on Lalalala-yeye&#39;s Blog</description>
     <generator>Hugo -- 0.157.0</generator>
     <language>zh-cn</language>
     <copyright>©1999 Lalalala-yeye&amp;rsquo;s Blog</copyright>
-    <lastBuildDate>Tue, 03 Mar 2026 11:13:42 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 18 Mar 2026 00:00:00 +0800</lastBuildDate>
+    <atom:link href="https://Lalalala-yeye.github.io/lalalalalalaal/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Awk</title>
+      <link>https://Lalalala-yeye.github.io/lalalalalalaal/tags/awk/</link>
+      <pubDate>Wed, 18 Mar 2026 00:00:00 +0800</pubDate>
+      <guid>https://Lalalala-yeye.github.io/lalalalalalaal/tags/awk/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Grep</title>
+      <link>https://Lalalala-yeye.github.io/lalalalalalaal/tags/grep/</link>
+      <pubDate>Wed, 18 Mar 2026 00:00:00 +0800</pubDate>
+      <guid>https://Lalalala-yeye.github.io/lalalalalalaal/tags/grep/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Linux</title>
+      <link>https://Lalalala-yeye.github.io/lalalalalalaal/tags/linux/</link>
+      <pubDate>Wed, 18 Mar 2026 00:00:00 +0800</pubDate>
+      <guid>https://Lalalala-yeye.github.io/lalalalalalaal/tags/linux/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Makefile</title>
+      <link>https://Lalalala-yeye.github.io/lalalalalalaal/tags/makefile/</link>
+      <pubDate>Wed, 18 Mar 2026 00:00:00 +0800</pubDate>
+      <guid>https://Lalalala-yeye.github.io/lalalalalalaal/tags/makefile/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Sed</title>
+      <link>https://Lalalala-yeye.github.io/lalalalalalaal/tags/sed/</link>
+      <pubDate>Wed, 18 Mar 2026 00:00:00 +0800</pubDate>
+      <guid>https://Lalalala-yeye.github.io/lalalalalalaal/tags/sed/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Shell</title>
+      <link>https://Lalalala-yeye.github.io/lalalalalalaal/tags/shell/</link>
+      <pubDate>Wed, 18 Mar 2026 00:00:00 +0800</pubDate>
+      <guid>https://Lalalala-yeye.github.io/lalalalalalaal/tags/shell/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>ER图</title>
+      <link>https://Lalalala-yeye.github.io/lalalalalalaal/tags/er%E5%9B%BE/</link>
+      <pubDate>Sun, 08 Mar 2026 00:00:00 +0800</pubDate>
+      <guid>https://Lalalala-yeye.github.io/lalalalalalaal/tags/er%E5%9B%BE/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>OS</title>
+      <link>https://Lalalala-yeye.github.io/lalalalalalaal/tags/os/</link>
+      <pubDate>Sun, 08 Mar 2026 00:00:00 +0800</pubDate>
+      <guid>https://Lalalala-yeye.github.io/lalalalalalaal/tags/os/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>SE</title>
+      <link>https://Lalalala-yeye.github.io/lalalalalalaal/tags/se/</link>
+      <pubDate>Sun, 08 Mar 2026 00:00:00 +0800</pubDate>
+      <guid>https://Lalalala-yeye.github.io/lalalalalalaal/tags/se/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Soft Where</title>
+      <link>https://Lalalala-yeye.github.io/lalalalalalaal/tags/soft-where/</link>
+      <pubDate>Sun, 08 Mar 2026 00:00:00 +0800</pubDate>
+      <guid>https://Lalalala-yeye.github.io/lalalalalalaal/tags/soft-where/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>软件工程</title>
+      <link>https://Lalalala-yeye.github.io/lalalalalalaal/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/</link>
+      <pubDate>Sun, 08 Mar 2026 00:00:00 +0800</pubDate>
+      <guid>https://Lalalala-yeye.github.io/lalalalalalaal/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>数据库</title>
+      <link>https://Lalalala-yeye.github.io/lalalalalalaal/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
+      <pubDate>Sun, 08 Mar 2026 00:00:00 +0800</pubDate>
+      <guid>https://Lalalala-yeye.github.io/lalalalalalaal/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>学习分享</title>
+      <link>https://Lalalala-yeye.github.io/lalalalalalaal/tags/%E5%AD%A6%E4%B9%A0%E5%88%86%E4%BA%AB/</link>
+      <pubDate>Sun, 08 Mar 2026 00:00:00 +0800</pubDate>
+      <guid>https://Lalalala-yeye.github.io/lalalalalalaal/tags/%E5%AD%A6%E4%B9%A0%E5%88%86%E4%BA%AB/</guid>
+      <description></description>
+    </item>
     <item>
       <title>第一个</title>
-      <link>http://localhost:1313/tags/%E7%AC%AC%E4%B8%80%E4%B8%AA/</link>
+      <link>https://Lalalala-yeye.github.io/lalalalalalaal/tags/%E7%AC%AC%E4%B8%80%E4%B8%AA/</link>
       <pubDate>Tue, 03 Mar 2026 11:13:42 +0800</pubDate>
-      <guid>http://localhost:1313/tags/%E7%AC%AC%E4%B8%80%E4%B8%AA/</guid>
+      <guid>https://Lalalala-yeye.github.io/lalalalalalaal/tags/%E7%AC%AC%E4%B8%80%E4%B8%AA/</guid>
       <description></description>
     </item>
     <item>
       <title>啦啦啦啦啦啦</title>
-      <link>http://localhost:1313/tags/%E5%95%A6%E5%95%A6%E5%95%A6%E5%95%A6%E5%95%A6%E5%95%A6/</link>
+      <link>https://Lalalala-yeye.github.io/lalalalalalaal/tags/%E5%95%A6%E5%95%A6%E5%95%A6%E5%95%A6%E5%95%A6%E5%95%A6/</link>
       <pubDate>Tue, 03 Mar 2026 11:13:42 +0800</pubDate>
-      <guid>http://localhost:1313/tags/%E5%95%A6%E5%95%A6%E5%95%A6%E5%95%A6%E5%95%A6%E5%95%A6/</guid>
+      <guid>https://Lalalala-yeye.github.io/lalalalalalaal/tags/%E5%95%A6%E5%95%A6%E5%95%A6%E5%95%A6%E5%95%A6%E5%95%A6/</guid>
       <description></description>
     </item>
   </channel>

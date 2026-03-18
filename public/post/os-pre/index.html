@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="zh" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>OS pre | Lalalala-yeye&#39;s Blog</title>
+<meta name="keywords" content="OS, Soft Where, 学习分享">
+<meta name="description" content="OS pre 知识点和解题过程分享">
+<meta name="author" content="Lalalala-yeye">
+<link rel="canonical" href="https://Lalalala-yeye.github.io/lalalalalalaal/post/os-pre/">
+<link crossorigin="anonymous" href="/lalalalalalaal/assets/css/stylesheet.ea067b369d1f59469118831dbdecabb987d11b19478cc60348c49cbcfa141b70.css" integrity="sha256-6gZ7Np0fWUaRGIMdveyruYfRGxlHjMYDSMScvPoUG3A=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://Lalalala-yeye.github.io/lalalalalalaal/favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://Lalalala-yeye.github.io/lalalalalalaal/favicon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://Lalalala-yeye.github.io/lalalalalalaal/favicon.png">
+<link rel="apple-touch-icon" href="https://Lalalala-yeye.github.io/lalalalalalaal/favicon.png">
+<link rel="mask-icon" href="https://Lalalala-yeye.github.io/lalalalalalaal/favicon.png">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="zh" href="https://Lalalala-yeye.github.io/lalalalalalaal/post/os-pre/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+<style>
+ 
+.post-content pre,
+.post-content code,
+.post-content .highlight pre,
+.post-content .highlight code,
+.post-content .highlight pre code,
+.highlight pre.chroma code {
+  font-family: "JetBrains Mono", "Fira Code", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace !important;
+}
+ 
+.post-content .highlight pre code,
+.post-content .highlight pre.chroma code {
+  color: inherit !important;
+}
+
+ 
+html[data-theme="light"] {
+  --theme: #f5ecd8;
+  --entry: rgba(251, 245, 227, 0.85);
+  --border: #e2d3b4;
+}
+
+html[data-theme="light"],
+html[data-theme="light"] body {
+  background-color: #f5ecd8;                  
+  background-image: url('https://Lalalala-yeye.github.io/lalalalalalaal/img/');
+  background-size: cover;                     
+  background-repeat: no-repeat;               
+  background-attachment: fixed;               
+  background-blend-mode: multiply;            
+}
+
+ 
+html[data-theme="light"] .post-entry,
+html[data-theme="light"] .post-single {
+  background: var(--entry);
+  border: 1px solid var(--entry);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12), 0 12px 32px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+ 
+html[data-theme="light"] .post-tags a,
+html[data-theme="light"] .terms-tags a,
+html[data-theme="light"] .share-buttons,
+html[data-theme="light"] .paginav a {
+  border: 1px solid var(--code-bg);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+ 
+html[data-theme="dark"] {
+  --theme: rgb(22, 23, 26);
+  --entry: rgba(36, 37, 41, 0.9);
+  --border: rgb(45, 46, 50);
+}
+
+html[data-theme="dark"],
+html[data-theme="dark"] body {
+  background-color: rgb(45, 37, 23);          
+  background-image: url('https://Lalalala-yeye.github.io/lalalalalalaal/img/paper-texture.png');
+  background-size: cover;                     
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-blend-mode: multiply;            
+}
+
+ 
+html[data-theme="light"] .list,
+html[data-theme="dark"] .list {
+  background: transparent;
+}
+
+ 
+:root { --list-main-bg: transparent; }
+html[data-theme="light"] { --list-main-bg: rgba(254, 251, 245, 0.92); }
+html[data-theme="dark"] { --list-main-bg: rgba(11, 5, 0, 0.275); }
+ 
+.main:not(:has(.post-single)) {
+  background: var(--list-main-bg) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06) !important;
+}
+html[data-theme="dark"] .main {
+  background: var(--list-main-bg) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06) !important;
+}
+ 
+html[data-theme="light"] .main:has(.archive-year) {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+ 
+.main .post-entry {
+  padding: 28px 36px 28px 44px !important;
+}
+ 
+html[data-theme="dark"] .post-entry {
+  background: #333 !important;
+  border-color: #444 !important;
+  color: #da9c50 !important;
+}
+html[data-theme="dark"] .post-entry .entry-header h2,
+html[data-theme="dark"] .post-entry .entry-content,
+html[data-theme="dark"] .post-entry .entry-footer {
+  color: #da9c50 !important;
+}
+ 
+ 
+.list .page-header { margin-bottom: 1.5em !important; }
+.list .page-header h1 { font-size: 2.25rem !important; font-weight: 700 !important; }
+
+ 
+.archive-year {
+  margin-top: 2.5em !important;
+  padding-left: 0 !important;
+  border-bottom: none !important;
+}
+.archive-year:first-of-type { margin-top: 1.25em !important; }
+.archive-year:not(:last-of-type) { padding-bottom: 0 !important; }
+
+.archive-year-header {
+  font-size: 2.75rem !important;    
+  font-weight: 700 !important;
+  margin: 0 0 0 0 !important;    
+}
+.archive-year-header .archive-count {
+  font-weight: 400 !important;
+  color: var(--secondary) !important;
+  margin-left: 0.2em !important;
+  font-size: 0.75em !important;
+}
+
+ 
+.archive-month {
+  display: block !important;
+  padding: 0 0 0.6em 0 !important;    
+  margin-left: 3.5rem !important;
+  border: none !important;
+  border-bottom: none !important;
+}
+
+.archive-month-header {
+  margin: 0.6em 0 0.2em 0 !important;
+  width: auto !important;
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+}
+.archive-month-header .archive-count {
+  color: var(--secondary) !important;
+  margin-left: 0.2em !important;
+  font-size: 0.8em !important;
+}
+
+ 
+.archive-posts {
+  margin-left: 2.75rem !important;
+  width: auto !important;
+  position: relative !important;
+  padding-left: 1.5rem !important;
+}
+ 
+.archive-posts::before {
+  content: '' !important;
+  position: absolute !important;
+  left: 0.35rem !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  width: 2px !important;
+  background: var(--border) !important;
+  border-radius: 1px !important;
+}
+ 
+.archive-entry::before {
+  content: '' !important;
+  position: absolute !important;
+  left: -1.15rem !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 18px !important;
+  height: 18px !important;
+  border-radius: 50% !important;
+  background: transparent !important;
+  border: 2px solid var(--archive-dot-ring) !important;
+  box-sizing: border-box !important;
+  z-index: 1 !important;
+}
+.archive-entry::after {
+  content: '' !important;
+  position: absolute !important;
+  left: -1.15rem !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 7px !important;
+  height: 7px !important;
+  border-radius: 50% !important;
+  background: var(--archive-dot-inner) !important;
+  z-index: 2 !important;
+}
+
+ 
+:root {
+  --archive-card-bg: var(--entry);
+  --archive-card-border: var(--border);
+  --archive-dot-ring: var(--border);
+  --archive-dot-inner: var(--primary);
+}
+html[data-theme="light"] {
+  --archive-card-bg: rgba(254, 250, 243, 0.95);
+  --archive-card-border: #e8dcc8;
+  --archive-dot-ring: #b89255;
+  --archive-dot-inner: #784d0d;
+}
+html[data-theme="dark"] {
+  --archive-card-bg: var(--entry);
+  --archive-card-border: var(--border);
+  --archive-dot-ring: var(--border);
+  --archive-dot-inner: var(--primary);
+}
+
+.archive-entry {
+  padding: 0.75em 1em !important;
+  margin: 0 0 0.5em 0 !important;
+  background: var(--archive-card-bg) !important;
+  border: 1px solid var(--archive-card-border) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06) !important;
+  position: relative !important;
+}
+.archive-entry-title {
+  font-size: 1rem !important;
+  font-weight: 400 !important;
+  margin: 0 !important;
+  line-height: 1.4 !important;
+}
+.archive-meta {
+  font-size: 0.8125rem !important;
+  color: var(--secondary) !important;
+  margin-top: 0.2em !important;
+  margin-bottom: 0 !important;
+}
+
+ 
+.post-single {
+  padding: 28px 40px 36px 48px !important;
+}
+
+ 
+.post-single details {
+  margin: 1em 0 !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+}
+.post-single details:not([open]) {
+  border: 1px solid var(--border) !important;
+  background: var(--entry) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+}
+.post-single details[open] {
+  border: 1px solid var(--border) !important;
+  background: var(--entry) !important;
+}
+.post-single details summary {
+  padding: 0.6em 1em !important;
+  cursor: pointer !important;
+  font-weight: 600 !important;
+  list-style: none !important;
+  user-select: none !important;
+}
+.post-single details summary::-webkit-details-marker { display: none !important; }
+.post-single details summary::marker { content: none !important; }
+ 
+html[data-theme="light"] .post-single details:not([open]) summary {
+  background: rgba(232, 220, 200, 0.9) !important;
+  color: #5c4a2a !important;
+  border-bottom: 1px solid #e2d3b4 !important;
+}
+html[data-theme="light"] .post-single details[open] summary {
+  background: rgba(232, 220, 200, 0.6) !important;
+  color: #5c4a2a !important;
+  border-bottom: 1px solid #e2d3b4 !important;
+}
+ 
+html[data-theme="dark"] .post-single details:not([open]) summary {
+  background: rgba(55, 56, 60, 0.95) !important;
+  color: #da9c50 !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+html[data-theme="dark"] .post-single details[open] summary {
+  background: rgba(45, 46, 50, 0.8) !important;
+  color: #da9c50 !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+</style>
+<meta property="og:url" content="https://Lalalala-yeye.github.io/lalalalalalaal/post/os-pre/">
+  <meta property="og:site_name" content="Lalalala-yeye&#39;s Blog">
+  <meta property="og:title" content="OS pre">
+  <meta property="og:description" content="OS pre 知识点和解题过程分享">
+  <meta property="og:locale" content="zh-cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2026-03-08T00:00:00+08:00">
+    <meta property="article:modified_time" content="2026-03-08T00:00:00+08:00">
+    <meta property="article:tag" content="OS">
+    <meta property="article:tag" content="Soft Where">
+    <meta property="article:tag" content="学习分享">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OS pre">
+<meta name="twitter:description" content="OS pre 知识点和解题过程分享">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://Lalalala-yeye.github.io/lalalalalalaal/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "OS pre",
+      "item": "https://Lalalala-yeye.github.io/lalalalalalaal/post/os-pre/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "OS pre",
+  "name": "OS pre",
+  "description": "OS pre 知识点和解题过程分享\n",
+  "keywords": [
+    "OS", "Soft Where", "学习分享"
+  ],
+  "articleBody": "OS pre 知识点和解题过程分享\nOS-pre 实验经验 建议用 vim，vim 有很多其他的功能可以用文件加入啊，nano虽然感觉没vim好用，但是软件工程基础还是要求使用nano的，用了vim命令显示未知指令，不过软工是GUI，实在不熟练也可以直接改文件，但是会卡。lab0 一定要熟练 grep、shell 和 Makefile 文件的创建，真的要熟练才能及时写好，不然实验很麻烦。Git 因为有软工第一次实验，所以其实还好。\nC-exercise 认真阅读假期预习和 guide book，按照给的操作进入git仓库根目录也就是/24373433，再vim blib.c进入编辑就行，i进入插入模式。esc键退出，函数很简单，补充完整就好，然后make编译，再make run运行，出现 pass 就说明测试点过了，没过用 make dbg 调试一下就好了。\nmake-exercise Makefile示例\r1CC := gcc 2CFLAGS := -O2 -Wall 3.PHONY: out clean case_add case_sub case_mul case_div case_all 4# 用.PHONY避开文件存在的检查，伪目标，就不会检查同名文件是否存在。 5casegen: casegen.c 6\t$(CC) $(CFLAGS) -o $@ $\u003c 7#gcc -O2 -Wall -o casegen casegen.c. $@=当前规则目标名，$\u003c=第一个依赖文件 8calc: calc.c 9\t$(CC) $(CFLAGS) -o $@ $\u003c 10# 同上 11# 100 个加/减/乘/除样例，各自输出到对应文件 12case_add: casegen 13\t./casegen add 100 \u003e case_add 14 15case_sub: casegen 16\t./casegen sub 100 \u003e case_sub 17 18case_mul: casegen 19\t./casegen mul 100 \u003e case_mul 20 21case_div: casegen 22\t./casegen div 100 \u003e case_div 23# 这部分在下面分析casegen.c里详细讲述 24# 合并成 400 个样例 25case_all: case_add case_sub case_mul case_div 26\tcat case_add case_sub case_mul case_div \u003e case_all 27# make 或 make out：用 calc 计算 case_all，输出 out 28out: calc case_all 29\t./calc \u003c case_all \u003e out 30# 默认目标 31all: out 32clean: 33\trm -f case_* out casegen calc calc.c\r1#include 2#include 3 4int main() { 5 char op[5]; 6 int a, b; 7 while (scanf(\"%s%d%d\", op, \u0026a, \u0026b) == 3) { 8 if (!strcmp(op, \"add\")) { 9 printf(\"%d\\n\", a + b); 10 } else if (!strcmp(op, \"sub\")) { 11 printf(\"%d\\n\", a - b); 12 } else if (!strcmp(op, \"mul\")) { 13 printf(\"%d\\n\", a * b); 14 } else if (!strcmp(op, \"div\")) { 15 printf(\"%d\\n\", a / b); 16 } 17 } 18 return 0; 19} casegen.c\r1const char *ops[] = {\"add\", \"sub\", \"mul\", \"div\"}; 2 3uint32_t xrand() { 4 /* Algorithm \"xor\" from p. 4 of Marsaglia, \"Xorshift RNGs\" */ 5 static uint32_t x = 2024; 6 x ^= x \u003c\u003c 13; 7 x ^= x \u003e\u003e 17; 8 x ^= x \u003c\u003c 5; 9 return x; 10} 11 12void help() { 13 printf(\"Usage: ./casegen \\n\" 14 \"Available s: add, sub, mul, div.\\n\" 15 \": The number of test cases generated (a positive integer).\\n\"); 16}//这里写了命令的用法，usage：后面就是输出样例的指令，表示操作名，表示生成的个数，这就是为什么上面那么写 17 18int is_op_legal(char *op) { 19 size_t sz = sizeof(ops) / sizeof(ops[0]); 20 for (int i = 0; i \u003c sz; i++) { 21 if (strcmp(op, ops[i]) == 0) { 22 return 1; 23 } 24 } 25 return 0; 26} 27 28int get_num(char *str_num, int *num) { 29 *num = strtol(str_num, NULL, 10); 30 return *num \u003e 0; 31} 32 33int main(int argc, char **argv) { 34 int num; 35 if (argc != 3 || !is_op_legal(argv[1]) || !get_num(argv[2], \u0026num)) { 36 help(); 37 return 1; 38 } 39 while (num--) { 40 printf(\"%s %u %u\\n\", argv[1], xrand() % 10000 + 1, xrand() % 10000 + 1); 41 } 42 return 0; 43} mips-exercise 没有很多要说的，中文翻译过来一般都可以。\nMIPS 汇编 (MARS)\r1#include 2.data 3str: 4.asciiz \"Hello World\\n\" # Null-terminated string \"Hello World\" stored at label 'str' 5.align 2 # align to 4-byte boundary (2^2) 6var: 7.byte 3 # correctly aligned byte: 3 8/* '' 是需要替换的内容. */ 9/* use '.align ' to align the following words to 1-byte（希望是1字节一个对齐，所以就是.align 0） boundary (disabling word-alignment) */ 10/* so that the byte 3 and word 7 is \"connected\" */ 11/* Your code here. (1/6) */ 12.align 0 13.word 7, 8, 9 14 15.text 16/* We define '_start_mips' here as the entry of our program. */ 17EXPORT(_start_mips) 18.set at 19.set reorder 20 mtc0 zero, CP0_STATUS 21 li sp, 0x84000000 22 /* Load the address of the string 'str' into the first parameter register. */ 23 la a0, str 24 /* use 'addiu sp, sp, ' to push a proper-sized frame onto the stack for Nonleaf function 'print_str'. */ 25 /* Your code here. (2/6) */ 26 addiu sp,sp,-16 27 jal print_str 28 /* use 'addiu sp, sp, ' to restore stack pointer. */ 29 /* Your code here. (3/6) */ 30 addiu sp,sp,16 31 /* Set the first four parameters. */ 32 li a0, 0 33 li a1, 1 34 li a2, 2 35 li a3, 3 36 /* use 'addiu sp, sp, ' to push a proper-sized frame onto the stack for Nonleaf function 'hello'. */ 37 /* Your code here. (4/6) */ 38 addiu sp,sp,-24 39 lw t1, var 40 li t2, 5 41 /* use 'sw t1, (sp)' to store t1 at the proper place of the stack */ 42 /* so that t1 is 5th argument of function hello. */ 43 /* Your code here. (5/6) */ 44 sw t1,16(sp) 45 /* use 'sw t2, (sp)' to store t2 at the proper place of the stack */ 46 /* so that t2 is 6th argument of function hello. */ 47 /* Your code here. (6/6) */ 48 sw t2,20(sp) 49 /* use 'j' to call the function 'hello', we use 'j' instead of 'jal' because 'hello' is 'noreturn' */ 50 j hello ",
+  "wordCount" : "1336",
+  "inLanguage": "zh",
+  "datePublished": "2026-03-08T00:00:00+08:00",
+  "dateModified": "2026-03-08T00:00:00+08:00",
+  "author":{
+    "@type": "Person",
+    "name": "Lalalala-yeye"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://Lalalala-yeye.github.io/lalalalalalaal/post/os-pre/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Lalalala-yeye's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://Lalalala-yeye.github.io/lalalalalalaal/favicon.png"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://Lalalala-yeye.github.io/lalalalalalaal/" accesskey="h" title="Lalalala-yeye&#39;s Blog (Alt + H)">Lalalala-yeye&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://Lalalala-yeye.github.io/lalalalalalaal/" title="Lalalala-yeye&#39;s Blog">
+                    <span>首页</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://Lalalala-yeye.github.io/lalalalalalaal/archives/" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://Lalalala-yeye.github.io/lalalalalalaal/categories/" title="Categories">
+                    <span>分类</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://Lalalala-yeye.github.io/lalalalalalaal/tags/" title="Tags">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://Lalalala-yeye.github.io/lalalalalalaal/search/" title="搜索">
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://Lalalala-yeye.github.io/lalalalalalaal/about/" title="关于">
+                    <span>关于</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      OS pre
+    </h1>
+    <div class="post-meta"><span title='2026-03-08 00:00:00 +0800 CST'>2026年3月8日</span>&nbsp;·&nbsp;<span>Lalalala-yeye</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>OS pre 知识点和解题过程分享</p>
+<h1 id="os-pre">OS-pre<a hidden class="anchor" aria-hidden="true" href="#os-pre">#</a></h1>
+<h2 id="实验经验">实验经验<a hidden class="anchor" aria-hidden="true" href="#实验经验">#</a></h2>
+<p>建议用 vim，vim 有很多其他的功能可以用文件加入啊，nano虽然感觉没vim好用，但是软件工程基础还是要求使用nano的，用了vim命令显示未知指令，不过软工是GUI，实在不熟练也可以直接改文件，但是会卡。lab0 一定要熟练 grep、shell 和 Makefile 文件的创建，真的要熟练才能及时写好，不然实验很麻烦。Git 因为有软工第一次实验，所以其实还好。</p>
+<h2 id="c-exercise">C-exercise<a hidden class="anchor" aria-hidden="true" href="#c-exercise">#</a></h2>
+<p>认真阅读假期预习和 guide book，按照给的操作进入git仓库根目录也就是/24373433，再vim blib.c进入编辑就行，i进入插入模式。esc键退出，函数很简单，补充完整就好，然后make编译，再make run运行，出现 pass 就说明测试点过了，没过用 <code>make dbg</code> 调试一下就好了。</p>
+<h2 id="make-exercise">make-exercise<a hidden class="anchor" aria-hidden="true" href="#make-exercise">#</a></h2>
+<details>
+<summary>Makefile示例</summary>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="nv">CC</span> <span class="o">:=</span> gcc
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="nv">CFLAGS</span> <span class="o">:=</span> -O2 -Wall
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="nf">.PHONY</span><span class="o">:</span> <span class="n">out</span> <span class="n">clean</span> <span class="n">case_add</span> <span class="n">case_sub</span> <span class="n">case_mul</span> <span class="n">case_div</span> <span class="n">case_all</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="c"># 用.PHONY避开文件存在的检查，伪目标，就不会检查同名文件是否存在。
+</span></span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="nf">casegen</span><span class="o">:</span> <span class="n">casegen</span>.<span class="n">c</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">	<span class="k">$(</span>CC<span class="k">)</span> <span class="k">$(</span>CFLAGS<span class="k">)</span> -o <span class="nv">$@</span> $&lt;
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="c">#gcc -O2 -Wall -o casegen casegen.c. $@=当前规则目标名，$&lt;=第一个依赖文件
+</span></span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="nf">calc</span><span class="o">:</span> <span class="n">calc</span>.<span class="n">c</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">	<span class="k">$(</span>CC<span class="k">)</span> <span class="k">$(</span>CFLAGS<span class="k">)</span> -o <span class="nv">$@</span> $&lt;
+</span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="c"># 同上
+</span></span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="c"># 100 个加/减/乘/除样例，各自输出到对应文件
+</span></span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="nf">case_add</span><span class="o">:</span> <span class="n">casegen</span>
+</span></span><span class="line"><span class="ln">13</span><span class="cl">	./casegen add <span class="m">100</span>  &gt; case_add
+</span></span><span class="line"><span class="ln">14</span><span class="cl">
+</span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="nf">case_sub</span><span class="o">:</span> <span class="n">casegen</span>
+</span></span><span class="line"><span class="ln">16</span><span class="cl">	./casegen sub <span class="m">100</span> &gt; case_sub
+</span></span><span class="line"><span class="ln">17</span><span class="cl">
+</span></span><span class="line"><span class="ln">18</span><span class="cl"><span class="nf">case_mul</span><span class="o">:</span> <span class="n">casegen</span>
+</span></span><span class="line"><span class="ln">19</span><span class="cl">	./casegen mul <span class="m">100</span>  &gt; case_mul
+</span></span><span class="line"><span class="ln">20</span><span class="cl">
+</span></span><span class="line"><span class="ln">21</span><span class="cl"><span class="nf">case_div</span><span class="o">:</span> <span class="n">casegen</span>
+</span></span><span class="line"><span class="ln">22</span><span class="cl">	./casegen div <span class="m">100</span>  &gt; case_div
+</span></span><span class="line"><span class="ln">23</span><span class="cl"><span class="c"># 这部分在下面分析casegen.c里详细讲述
+</span></span></span><span class="line"><span class="ln">24</span><span class="cl"><span class="c"># 合并成 400 个样例
+</span></span></span><span class="line"><span class="ln">25</span><span class="cl"><span class="nf">case_all</span><span class="o">:</span> <span class="n">case_add</span> <span class="n">case_sub</span> <span class="n">case_mul</span> <span class="n">case_div</span>
+</span></span><span class="line"><span class="ln">26</span><span class="cl">	cat case_add case_sub case_mul case_div &gt; case_all
+</span></span><span class="line"><span class="ln">27</span><span class="cl"><span class="c"># make 或 make out：用 calc 计算 case_all，输出 out
+</span></span></span><span class="line"><span class="ln">28</span><span class="cl"><span class="nf">out</span><span class="o">:</span> <span class="n">calc</span> <span class="n">case_all</span>
+</span></span><span class="line"><span class="ln">29</span><span class="cl">	./calc &lt; case_all &gt; out
+</span></span><span class="line"><span class="ln">30</span><span class="cl"><span class="c"># 默认目标
+</span></span></span><span class="line"><span class="ln">31</span><span class="cl"><span class="nf">all</span><span class="o">:</span> <span class="n">out</span>
+</span></span><span class="line"><span class="ln">32</span><span class="cl"><span class="nf">clean</span><span class="o">:</span>
+</span></span><span class="line"><span class="ln">33</span><span class="cl">	rm -f case_* out casegen calc
+</span></span></code></pre></div></details>
+<details>
+<summary>calc.c</summary>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="ln"> 3</span><span class="cl">  
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">        <span class="kt">char</span> <span class="n">op</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">        <span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">        <span class="k">while</span> <span class="p">(</span><span class="nf">scanf</span><span class="p">(</span><span class="s">&#34;%s%d%d&#34;</span><span class="p">,</span> <span class="n">op</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">                <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nf">strcmp</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="s">&#34;add&#34;</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">                          <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;%d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">);</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl">                <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nf">strcmp</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="s">&#34;sub&#34;</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl">                         <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;%d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">);</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">                <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nf">strcmp</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="s">&#34;mul&#34;</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">13</span><span class="cl">                         <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;%d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">);</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl">                <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nf">strcmp</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="s">&#34;div&#34;</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">15</span><span class="cl">                         <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;%d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">a</span> <span class="o">/</span> <span class="n">b</span><span class="p">);</span>
+</span></span><span class="line"><span class="ln">16</span><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="ln">17</span><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="ln">18</span><span class="cl">        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">19</span><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div></details>
+<details>
+<summary>casegen.c</summary>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">ops</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#34;add&#34;</span><span class="p">,</span> <span class="s">&#34;sub&#34;</span><span class="p">,</span> <span class="s">&#34;mul&#34;</span><span class="p">,</span> <span class="s">&#34;div&#34;</span><span class="p">};</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="kt">uint32_t</span> <span class="nf">xrand</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">        <span class="cm">/* Algorithm &#34;xor&#34; from p. 4 of Marsaglia, &#34;Xorshift RNGs&#34; */</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">        <span class="k">static</span> <span class="kt">uint32_t</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">2024</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">        <span class="n">x</span> <span class="o">^=</span> <span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="mi">13</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">        <span class="n">x</span> <span class="o">^=</span> <span class="n">x</span> <span class="o">&gt;&gt;</span> <span class="mi">17</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">        <span class="n">x</span> <span class="o">^=</span> <span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="mi">5</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">        <span class="k">return</span> <span class="n">x</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl">
+</span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="kt">void</span> <span class="nf">help</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">13</span><span class="cl">        <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Usage: ./casegen &lt;op&gt; &lt;num&gt;</span><span class="se">\n</span><span class="s">&#34;</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl">               <span class="s">&#34;Available &lt;op&gt;s: add, sub, mul, div.</span><span class="se">\n</span><span class="s">&#34;</span>
+</span></span><span class="line"><span class="ln">15</span><span class="cl">               <span class="s">&#34;&lt;num&gt;: The number of test cases generated (a positive integer).</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="ln">16</span><span class="cl"><span class="p">}</span><span class="c1">//这里写了命令的用法，usage：后面就是输出样例的指令，&lt;op&gt;表示操作名，&lt;num&gt;表示生成的个数，这就是为什么上面那么写
+</span></span></span><span class="line"><span class="ln">17</span><span class="cl">
+</span></span><span class="line"><span class="ln">18</span><span class="cl"><span class="kt">int</span> <span class="nf">is_op_legal</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">op</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">19</span><span class="cl">        <span class="kt">size_t</span> <span class="n">sz</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">ops</span><span class="p">)</span> <span class="o">/</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">ops</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+</span></span><span class="line"><span class="ln">20</span><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">sz</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">21</span><span class="cl">                <span class="k">if</span> <span class="p">(</span><span class="nf">strcmp</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">ops</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">22</span><span class="cl">                        <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">23</span><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="ln">24</span><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="ln">25</span><span class="cl">        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">26</span><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="ln">27</span><span class="cl">
+</span></span><span class="line"><span class="ln">28</span><span class="cl"><span class="kt">int</span> <span class="nf">get_num</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">str_num</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">num</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">29</span><span class="cl">        <span class="o">*</span><span class="n">num</span> <span class="o">=</span> <span class="nf">strtol</span><span class="p">(</span><span class="n">str_num</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+</span></span><span class="line"><span class="ln">30</span><span class="cl">        <span class="k">return</span> <span class="o">*</span><span class="n">num</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">31</span><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="ln">32</span><span class="cl">
+</span></span><span class="line"><span class="ln">33</span><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">34</span><span class="cl">        <span class="kt">int</span> <span class="n">num</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">35</span><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">argc</span> <span class="o">!=</span> <span class="mi">3</span> <span class="o">||</span> <span class="o">!</span><span class="nf">is_op_legal</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">||</span> <span class="o">!</span><span class="nf">get_num</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="o">&amp;</span><span class="n">num</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">36</span><span class="cl">                <span class="nf">help</span><span class="p">();</span>
+</span></span><span class="line"><span class="ln">37</span><span class="cl">                <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">38</span><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="ln">39</span><span class="cl">        <span class="k">while</span> <span class="p">(</span><span class="n">num</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">40</span><span class="cl">                <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;%s %u %u</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nf">xrand</span><span class="p">()</span> <span class="o">%</span> <span class="mi">10000</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nf">xrand</span><span class="p">()</span> <span class="o">%</span> <span class="mi">10000</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="ln">41</span><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="ln">42</span><span class="cl">        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">43</span><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div></details>
+<h2 id="mips-exercise">mips-exercise<a hidden class="anchor" aria-hidden="true" href="#mips-exercise">#</a></h2>
+<p>没有很多要说的，中文翻译过来一般都可以。</p>
+<details>
+<summary>MIPS 汇编 (MARS)</summary>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="c1">#include &lt;asm/asm.h&gt;
+</span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="na">.data</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="nl">str:</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="na">.asciiz</span> <span class="s">&#34;Hello World\n&#34;</span>  <span class="c1"># Null-terminated string &#34;Hello World&#34; stored at label &#39;str&#39;
+</span></span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="na">.align</span> <span class="mi">2</span> <span class="c1"># align to 4-byte boundary (2^2)
+</span></span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="nl">var:</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="na">.byte</span> <span class="mi">3</span> <span class="c1"># correctly aligned byte: 3
+</span></span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="cm">/* &#39;&lt;x&gt;&#39; 是需要替换的内容. */</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="cm">/* use &#39;.align &lt;x&gt;&#39; to align the following words to 1-byte（希望是1字节一个对齐，所以就是.align 0） boundary (disabling word-alignment) */</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="cm">/* so that the byte 3 and word 7 is &#34;connected&#34; */</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="cm">/* Your code here. (1/6) */</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="na">.align</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="na">.word</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl">
+</span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="na">.text</span>
+</span></span><span class="line"><span class="ln">16</span><span class="cl"><span class="cm">/* We define &#39;_start_mips&#39; here as the entry of our program. */</span>
+</span></span><span class="line"><span class="ln">17</span><span class="cl"><span class="nf">EXPORT</span><span class="p">(</span><span class="no">_start_mips</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">18</span><span class="cl"><span class="na">.set</span> <span class="no">at</span>
+</span></span><span class="line"><span class="ln">19</span><span class="cl"><span class="na">.set</span> <span class="no">reorder</span>
+</span></span><span class="line"><span class="ln">20</span><span class="cl">        <span class="nf">mtc0</span>    <span class="no">zero</span><span class="p">,</span> <span class="no">CP0_STATUS</span>
+</span></span><span class="line"><span class="ln">21</span><span class="cl">        <span class="nf">li</span>      <span class="no">sp</span><span class="p">,</span> <span class="mi">0x84000000</span>
+</span></span><span class="line"><span class="ln">22</span><span class="cl">        <span class="cm">/* Load the address of the string &#39;str&#39; into the first parameter register. */</span>
+</span></span><span class="line"><span class="ln">23</span><span class="cl">        <span class="nf">la</span>      <span class="no">a0</span><span class="p">,</span> <span class="no">str</span>
+</span></span><span class="line"><span class="ln">24</span><span class="cl">        <span class="cm">/* use &#39;addiu  sp, sp, &lt;x&gt;&#39; to push a proper-sized frame onto the stack for Nonleaf function &#39;print_str&#39;. */</span>
+</span></span><span class="line"><span class="ln">25</span><span class="cl">        <span class="cm">/* Your code here. (2/6) */</span>
+</span></span><span class="line"><span class="ln">26</span><span class="cl">        <span class="nf">addiu</span> <span class="no">sp</span><span class="p">,</span><span class="no">sp</span><span class="p">,-</span><span class="mi">16</span>
+</span></span><span class="line"><span class="ln">27</span><span class="cl">        <span class="nf">jal</span>     <span class="no">print_str</span>
+</span></span><span class="line"><span class="ln">28</span><span class="cl">        <span class="cm">/* use &#39;addiu  sp, sp, &lt;x&gt;&#39; to restore stack pointer. */</span>
+</span></span><span class="line"><span class="ln">29</span><span class="cl">        <span class="cm">/* Your code here. (3/6) */</span>
+</span></span><span class="line"><span class="ln">30</span><span class="cl">        <span class="nf">addiu</span> <span class="no">sp</span><span class="p">,</span><span class="no">sp</span><span class="p">,</span><span class="mi">16</span>
+</span></span><span class="line"><span class="ln">31</span><span class="cl">        <span class="cm">/* Set the first four parameters. */</span>
+</span></span><span class="line"><span class="ln">32</span><span class="cl">        <span class="nf">li</span>      <span class="no">a0</span><span class="p">,</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="ln">33</span><span class="cl">        <span class="nf">li</span>      <span class="no">a1</span><span class="p">,</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="ln">34</span><span class="cl">        <span class="nf">li</span>      <span class="no">a2</span><span class="p">,</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="ln">35</span><span class="cl">        <span class="nf">li</span>      <span class="no">a3</span><span class="p">,</span> <span class="mi">3</span>
+</span></span><span class="line"><span class="ln">36</span><span class="cl">        <span class="cm">/* use &#39;addiu  sp, sp, &lt;x&gt;&#39; to push a proper-sized frame onto the stack for Nonleaf function &#39;hello&#39;. */</span>
+</span></span><span class="line"><span class="ln">37</span><span class="cl">        <span class="cm">/* Your code here. (4/6) */</span>
+</span></span><span class="line"><span class="ln">38</span><span class="cl">        <span class="nf">addiu</span> <span class="no">sp</span><span class="p">,</span><span class="no">sp</span><span class="p">,-</span><span class="mi">24</span>
+</span></span><span class="line"><span class="ln">39</span><span class="cl">        <span class="nf">lw</span>      <span class="no">t1</span><span class="p">,</span> <span class="no">var</span>
+</span></span><span class="line"><span class="ln">40</span><span class="cl">        <span class="nf">li</span>      <span class="no">t2</span><span class="p">,</span> <span class="mi">5</span>
+</span></span><span class="line"><span class="ln">41</span><span class="cl">        <span class="cm">/* use &#39;sw  t1, &lt;x&gt;(sp)&#39; to store t1 at the proper place of the stack */</span>
+</span></span><span class="line"><span class="ln">42</span><span class="cl">        <span class="cm">/* so that t1 is 5th argument of function hello. */</span>
+</span></span><span class="line"><span class="ln">43</span><span class="cl">        <span class="cm">/* Your code here. (5/6) */</span>
+</span></span><span class="line"><span class="ln">44</span><span class="cl">        <span class="nf">sw</span> <span class="no">t1</span><span class="p">,</span><span class="mi">16</span><span class="p">(</span><span class="no">sp</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">45</span><span class="cl">        <span class="cm">/* use &#39;sw  t2, &lt;x&gt;(sp)&#39; to store t2 at the proper place of the stack */</span>
+</span></span><span class="line"><span class="ln">46</span><span class="cl">        <span class="cm">/* so that t2 is 6th argument of function hello. */</span>
+</span></span><span class="line"><span class="ln">47</span><span class="cl">        <span class="cm">/* Your code here. (6/6) */</span>
+</span></span><span class="line"><span class="ln">48</span><span class="cl">        <span class="nf">sw</span> <span class="no">t2</span><span class="p">,</span><span class="mi">20</span><span class="p">(</span><span class="no">sp</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">49</span><span class="cl">        <span class="cm">/* use &#39;j&#39; to call the function &#39;hello&#39;, we use &#39;j&#39; instead of &#39;jal&#39; because &#39;hello&#39; is &#39;noreturn&#39; */</span>
+</span></span><span class="line"><span class="ln">50</span><span class="cl">        <span class="nf">j</span>       <span class="no">hello</span>
+</span></span></code></pre></div></details>
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://Lalalala-yeye.github.io/lalalalalalaal/tags/os/">OS</a></li>
+      <li><a href="https://Lalalala-yeye.github.io/lalalalalalaal/tags/soft-where/">Soft Where</a></li>
+      <li><a href="https://Lalalala-yeye.github.io/lalalalalalaal/tags/%E5%AD%A6%E4%B9%A0%E5%88%86%E4%BA%AB/">学习分享</a></li>
+    </ul>
+  </footer><div id="tw-comment"></div>
+<script>
+    
+    const getStoredTheme = () => localStorage.getItem("pref-theme") === "light" ? "light" : "dark";
+    const setGiscusTheme = () => {
+        const sendMessage = (message) => {
+            const iframe = document.querySelector('iframe.giscus-frame');
+            if (iframe) {
+                iframe.contentWindow.postMessage({giscus: message}, 'https://giscus.app');
+            }
+        }
+        sendMessage({setConfig: {theme: getStoredTheme()}})
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const giscusAttributes = {
+            "src": "https://giscus.app/client.js",
+            "data-repo": "Lalalala-yeye\/lalalalalalaal",
+            "data-repo-id": "xxxxxx",
+            "data-category": "Announcements",
+            "data-category-id": "xxxxx",
+            "data-mapping": "pathname",
+            "data-strict": "0",
+            "data-reactions-enabled": "1",
+            "data-emit-metadata": "0",
+            "data-input-position": "bottom",
+            "data-theme": getStoredTheme(),
+            "data-lang": "zh-CN",
+            "data-loading": "lazy",
+            "crossorigin": "anonymous",
+        };
+
+        
+        const giscusScript = document.createElement("script");
+        Object.entries(giscusAttributes).forEach(
+                ([key, value]) => giscusScript.setAttribute(key, value));
+        document.querySelector("#tw-comment").appendChild(giscusScript);
+
+        
+        const themeSwitcher = document.querySelector("#theme-toggle");
+        if (themeSwitcher) {
+            themeSwitcher.addEventListener("click", setGiscusTheme);
+        }
+        const themeFloatSwitcher = document.querySelector("#theme-toggle-float");
+        if (themeFloatSwitcher) {
+            themeFloatSwitcher.addEventListener("click", setGiscusTheme);
+        }
+    });
+</script>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span><a href="https://Lalalala-yeye.github.io/" target="_blank" rel="noopener noreferrer">©1999 Lalalala-yeye&rsquo;s Blog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
