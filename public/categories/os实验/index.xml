@@ -7,8 +7,15 @@
     <generator>Hugo -- 0.157.0</generator>
     <language>zh-cn</language>
     <copyright>©1999 Lalalala-yeye&amp;rsquo;s Blog</copyright>
-    <lastBuildDate>Sun, 08 Mar 2026 00:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 18 Mar 2026 00:00:00 +0800</lastBuildDate>
     <atom:link href="https://Lalalala-yeye.github.io/lalalalalalaal/categories/os%E5%AE%9E%E9%AA%8C/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OS_lab0_实验报告</title>
+      <link>https://Lalalala-yeye.github.io/lalalalalalaal/post/os_lab0_%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/</link>
+      <pubDate>Wed, 18 Mar 2026 00:00:00 +0800</pubDate>
+      <guid>https://Lalalala-yeye.github.io/lalalalalalaal/post/os_lab0_%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/</guid>
+      <description>&lt;p&gt;本篇为 OS Lab0 的实验报告，重点记录 Thinking 题作答、关键难点分析与实验体会。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>OS pre</title>
       <link>https://Lalalala-yeye.github.io/lalalalalalaal/post/os-pre/</link>

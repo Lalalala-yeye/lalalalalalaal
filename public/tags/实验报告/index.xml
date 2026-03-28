@@ -1,21 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Grep on Lalalala-yeye&#39;s Blog</title>
-    <link>https://Lalalala-yeye.github.io/lalalalalalaal/tags/grep/</link>
-    <description>Recent content in Grep on Lalalala-yeye&#39;s Blog</description>
+    <title>实验报告 on Lalalala-yeye&#39;s Blog</title>
+    <link>https://Lalalala-yeye.github.io/lalalalalalaal/tags/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/</link>
+    <description>Recent content in 实验报告 on Lalalala-yeye&#39;s Blog</description>
     <generator>Hugo -- 0.157.0</generator>
     <language>zh-cn</language>
     <copyright>©1999 Lalalala-yeye&amp;rsquo;s Blog</copyright>
     <lastBuildDate>Wed, 18 Mar 2026 00:00:00 +0800</lastBuildDate>
-    <atom:link href="https://Lalalala-yeye.github.io/lalalalalalaal/tags/grep/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Linux 基础指令与 grep/awk/sed &amp; Shell/Makefile 总结</title>
-      <link>https://Lalalala-yeye.github.io/lalalalalalaal/post/linux-tools-note/</link>
-      <pubDate>Wed, 18 Mar 2026 00:00:00 +0800</pubDate>
-      <guid>https://Lalalala-yeye.github.io/lalalalalalaal/post/linux-tools-note/</guid>
-      <description>&lt;p&gt;Linux 常用基础指令 + &lt;code&gt;grep/awk/sed&lt;/code&gt; + Shell 脚本 + Makefile 知识点汇总。&lt;/p&gt;</description>
-    </item>
+    <atom:link href="https://Lalalala-yeye.github.io/lalalalalalaal/tags/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>OS_lab0_实验报告</title>
       <link>https://Lalalala-yeye.github.io/lalalalalalaal/post/os_lab0_%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/</link>
