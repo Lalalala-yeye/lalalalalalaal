@@ -11,6 +11,8 @@ Linux 常用基础指令 + `grep/awk/sed` + Shell 脚本 + Makefile 知识点汇
 
 <!--more-->
 
+[下载可打印版（Markdown）](../../files/linux-tools-note-print.md)（浏览器打开后 Ctrl+P 另存为 PDF）
+
 ## 一、Linux 基本常用指令
 
 ### 1. 文件和目录操作
