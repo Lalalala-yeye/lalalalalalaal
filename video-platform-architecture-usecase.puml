@@ -1,0 +1,106 @@
+@startuml 视频平台-总体架构用例图
+title 视频平台系统总体架构用例图（子系统划分 + 用例依赖示意）
+skinparam handwritten false
+skinparam packageStyle rectangle
+skinparam actorStyle awesome
+left to right direction
+
+actor "访客" as Guest
+actor "用户" as User
+actor "内容发布者" as Creator
+
+Creator -|> User
+
+rectangle "用户与权限管理系统" #AliceBlue {
+  usecase "注册" as UC_Reg
+  usecase "登录" as UC_Login
+  usecase "维护个人资料" as UC_Profile
+  usecase "退出" as UC_Logout
+}
+
+rectangle "视频播放系统" #Honeydew {
+  usecase "浏览与推荐" as UC_Browse
+  usecase "查看视频详情" as UC_Detail
+  usecase "播放视频" as UC_Play
+  usecase "查看播放历史" as UC_History
+}
+
+rectangle "直播系统" #Lavender {
+  usecase "查看直播列表" as UC_LiveList
+  usecase "进入直播间观看" as UC_LiveWatch
+  usecase "离开直播间" as UC_LiveLeave
+  usecase "发送互动信息" as UC_LiveChat
+}
+
+rectangle "订阅系统" #MistyRose {
+  usecase "订阅对象" as UC_Sub
+  usecase "取消订阅" as UC_Unsub
+  usecase "查看订阅与更新" as UC_SubList
+}
+
+rectangle "视频发布与编辑系统" #LightYellow {
+  usecase "上传并发布视频" as UC_Upload
+  usecase "编辑视频信息" as UC_EditVid
+  usecase "删除或上下架" as UC_ManageVid
+}
+
+rectangle "评论与搜索系统" #Gainsboro {
+  usecase "关键词搜索" as UC_Search
+  usecase "发表评论" as UC_CmtPost
+  usecase "查看评论" as UC_CmtView
+}
+
+' ========== 参与者关联（参考图：入口多在「用户」子系统 + 少量直达浏览）==========
+Guest --> UC_Reg
+Guest --> UC_Browse
+Guest --> UC_LiveList
+Guest --> UC_Search
+
+User --> UC_Login
+User --> UC_Profile
+User --> UC_Logout
+User --> UC_Browse
+User --> UC_History
+User --> UC_SubList
+
+Creator --> UC_Upload
+Creator --> UC_EditVid
+Creator --> UC_ManageVid
+
+' ========== 用例间依赖 / 典型业务流程（参考图跨子系统箭头）==========
+UC_Login ..> UC_Browse : 个性化\n推荐等
+UC_Login ..> UC_Play
+UC_Login ..> UC_LiveWatch
+UC_Login ..> UC_Sub
+UC_Login ..> UC_Unsub
+UC_Login ..> UC_CmtPost
+UC_Login ..> UC_Upload
+UC_Login ..> UC_EditVid
+UC_Login ..> UC_ManageVid
+
+UC_Browse --> UC_Detail
+UC_Search --> UC_Detail
+UC_Detail --> UC_Play
+UC_Detail --> UC_CmtView
+UC_Detail --> UC_Sub
+
+UC_Play --> UC_History
+
+UC_LiveList --> UC_LiveWatch
+UC_LiveWatch --> UC_LiveChat
+UC_LiveWatch --> UC_LiveLeave
+
+UC_Sub ..> UC_SubList : 更新展示
+UC_Unsub ..> UC_SubList : 更新展示
+
+UC_Upload ..> UC_EditVid : 后续管理
+UC_Upload ..> UC_ManageVid
+
+note right of UC_Login
+  与参考图一致：
+  「登录」向需鉴权的用例
+  引出依赖关系，
+  不表示用户逐个子系统登录。
+end note
+
+@enduml
