@@ -1,7 +1,7 @@
 +++
-title = "OS_lab4_实验报告"
+title = "OS_lab5_实验报告"
 author = "Lalalala-yeye"
-date = 2026-03-18T00:00:00+08:00
+date = 2026-05-29T00:00:00+08:00
 categories = ["OS实验"]
 tags = ["OS","实验报告","Shell","Makefile","grep","sed","awk"]
 draft = false

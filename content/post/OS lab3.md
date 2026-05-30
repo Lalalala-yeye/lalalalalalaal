@@ -1,5 +1,5 @@
 +++
-title = "OS 课下实验Lab2"
+title = "OS 课下实验Lab3"
 author = "Lalalala-yeye"
 date = 2026-04-08T00:00:00+08:00
 categories = ["OS实验"]
